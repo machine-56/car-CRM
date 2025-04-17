@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
+
+<body class="register-body">
+    <div class="register-overlay">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Register</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                        <span id="error-email" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone</label>
+                        <input type="text" name="phone" class="form-control" required>
+                        <span id="error-phone" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                        <span id="error-username" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Profile Image</label>
+                        <input type="file" name="profile_image" class="form-control">
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-cstm mt-3">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script src="{% static 'accounts/js/register.js' %}"></script>
+
+{% endblock %}

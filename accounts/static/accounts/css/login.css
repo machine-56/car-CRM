@@ -1,0 +1,33 @@
+
+
+body.register-body {
+    background-image: url('/static/images/reg_bg-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.register-overlay {
+    background-color: #00000080;
+    height: calc(100vh - 139px); /* navbar + footer height subtracted */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.form-container {
+    background-color: #00000086;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    color: var(--off-white);
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(2px);
+}
+
+.form-container input {
+    border-radius: 5px;
+}
