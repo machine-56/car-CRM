@@ -29,3 +29,46 @@ body.register-body {
 .form-container input {
     border-radius: 5px;
 }
+
+
+@media (max-width: 376px) {
+    .form-container {
+      padding: 1rem;
+      max-height: 100%;
+      width: 90%;
+      border-radius: 0;
+      box-shadow: none;
+      margin: 1rem 0;
+    }
+  
+    .form-container h2 {
+      font-size: 1.3rem;
+    }
+  
+    .form-container input {
+      font-size: 0.9rem;
+      padding: 0.4rem;
+    }
+  
+    .form-container label {
+      font-size: 0.85rem;
+    }
+  
+    .register-overlay {
+      align-items: flex-start;
+      padding-top: 2rem;
+      height: auto;
+      height: 100%;
+    }
+  
+    .form-container button,
+    .form-container input[type="submit"] {
+      font-size: 0.95rem;
+      padding: 0.5rem;
+    }
+  
+    .text-center.mb-4 {
+      margin-bottom: 1rem !important;
+    }
+  }
+  
