@@ -1,0 +1,23 @@
+.car-card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .car-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .car-card .btn-cstm {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .car-card .btn-cstm:hover {
+    background-color: var(--accent-red);
+  }
+  

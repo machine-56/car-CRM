@@ -1,0 +1,30 @@
+{% extends 'user/userBase.html' %}
+{% load static %}
+{% block title %}{{ car.brand }} {{ car.name }} | Aurelius Motors{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'user/css/car_detail.css' %}">
+
+<div class="container car-detail-page">
+  <div class="row g-5">
+    <div class="col-md-6">
+      <img src="{{ car.image.url }}" alt="{{ car.name }}" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h2>{{ car.brand }} {{ car.name }}</h2>
+      <p class="text-muted">{{ car.year_of_manufacture }}</p>
+      <p><strong>Price:</strong> ${{ car.price }}</p>
+      <p><strong>Mileage:</strong> {{ car.mileage }}</p>
+      <p><strong>Gearbox:</strong> {{ car.get_gearbox_display }} | {{ car.get_speed_display }}</p>
+      <p><strong>Category:</strong> {{ car.get_category_display }}</p>
+      <p class="mt-4">{{ car.description }}</p>
+
+      <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-cstm">Make It Yours</button>
+        <a href="{% url 'user_home' %}" class="btn btn_w btn-dark" >Back</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

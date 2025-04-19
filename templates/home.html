@@ -1,7 +1,109 @@
 {% extends 'index.html' %}
 {% load static %}
+
+{% block title %}Welcome | Aurelius Motors{% endblock %}
+
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-<p>aaaaavoooooo</p>
-
+<div class="home_main_image w-100">
+  <div class="overlay text-center text-white d-flex flex-column justify-content-center align-items-center px-3">
+    <h1 class="display-4">Welcome to Aurelius Motors</h1>
+    <p class="lead">Precision. Power. Perfection.</p>
+    <a href="{% url 'user_home' %}" class="btn btn-explore mt-3">Explore Now</a>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="showcase-section">
+      <div class="container">
+        <h2 class="text-center mb-5">Our Top Performers</h2>
+        <div class="row g-4 justify-content-center">
+        
+          <div class="col-lg-4 col-md-6">
+            <div class="card model-card" style="height: 400px;">
+              <img src="{% static 'images/cars/arclite_xr.png' %}" class="card-img-top" style="height: 220px; object-fit: cover;" alt="Aurelius ArcLite XR">
+              <div class="card-body">
+                <h5 class="card-title">Aurelius ArcLite XR</h5>
+                <p class="card-text">Futuristic engineering wrapped in sleek elegance — made for tomorrow’s roads.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-lg-4 col-md-6">
+            <div class="card model-card" style="height: 400px;">
+              <img src="{% static 'images/cars/imperial_drive.png' %}" class="card-img-top" style="height: 220px; object-fit: cover;" alt="Aurelius Imperial Drive">
+              <div class="card-body">
+                <h5 class="card-title">Aurelius Imperial Drive</h5>
+                <p class="card-text">Luxury and dominance redefined — a statement of presence and performance.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-lg-4 col-md-6">
+            <div class="card model-card" style="height: 400px;">
+              <img src="{% static 'images/cars/inferno_z1.png' %}" class="card-img-top" style="height: 220px; object-fit: cover;" alt="Aurelius Inferno Z1">
+              <div class="card-body">
+                <h5 class="card-title">Aurelius Inferno Z1</h5>
+                <p class="card-text">Raw power meets refined control — built to ignite your soul on every turn.</p>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="why-us-section">
+      <div class="container text-center">
+        <h2 class="mb-4">Why Choose Aurelius Motors?</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h5>Engineering Excellence</h5>
+            <p>We combine cutting-edge technology with timeless craftsmanship.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Sustainability</h5>
+            <p>Driving the future with eco-conscious electric innovations.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Legacy of Trust</h5>
+            <p>Backed by decades of experience and customer satisfaction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="motto-section text-white d-flex flex-column justify-content-center align-items-center text-center">
+      <div class="container">
+        <h2>Driven by Passion. Engineered for Legacy.</h2>
+        <p class="mt-3">At Aurelius Motors, we don’t just build cars — we craft experiences. Every curve, every roar, every feature is tuned to perfection. Our legacy is not speed, it's soul.</p>
+      </div>
+    </div>
+    
+    <div class="testimonial-section">
+      <div class="container text-center">
+        <h2 class="mb-4">What Our Customers Say</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <blockquote class="blockquote">
+              <p>"The Aether LX changed the way I view driving. It's not a car, it's an experience."</p>
+              <footer class="blockquote-footer">Ravi Sharma, Bengaluru</footer>
+            </blockquote>
+          </div>
+          <div class="col-md-4">
+            <blockquote class="blockquote">
+              <p>"Aurelius's after-sales service is unmatched. They truly care about their customers."</p>
+              <footer class="blockquote-footer">Priya Desai, Pune</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-section text-center">
+      <h3 class="mb-3">Your dream car awaits. Are you ready?</h3>
+      <a href="{% url 'user_home' %}" class="btn btn-cstm btn-lg">Enter the Showroom</a>
+    </div>
+</div>
 {% endblock %}

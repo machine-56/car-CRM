@@ -33,7 +33,7 @@ class Car(models.Model):
 
     # Detailed specs
     year_of_manufacture = models.PositiveIntegerField()
-    mileage = models.CharField(max_length=50)  # e.g., "15 km/l" or "350 km/charge"
+    mileage = models.CharField(max_length=50)
     gearbox = models.CharField(max_length=20, choices=GEARBOX_CHOICES)
     speed = models.CharField(max_length=10, choices=SPEED_CHOICES)
     description = models.TextField()

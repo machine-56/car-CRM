@@ -1,0 +1,40 @@
+
+
+.test-drive-form {
+  width: 80%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-medium);
+}
+
+.test-drive-form label {
+  font-weight: 500;
+  color: var(--dark-violet);
+}
+
+.test-drive-form input,
+.test-drive-form select {
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.test-drive-form .btn-cstm {
+  background-color: var(--primary-red);
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 2rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.test-drive-form .btn-cstm:hover {
+  background-color: var(--accent-red);
+}
+
+@media (max-width: 768px) {
+    .test-drive-form {
+        width: 100%;
+        padding: 0;
+    }
+}

@@ -73,20 +73,19 @@
     background-color: var(--accent-red);
 }
 
-/* Custom fading <hr> */
 .gradient-hr {
     height: 1px;
     border: none;
-    background: linear-gradient(to right, transparent, var(--metallic-grey), transparent);
+    background: linear-gradient(to right, transparent, var(--gradient), transparent);
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
 
-/* Highlight brand strip */
 .highlight-strip {
-    background-color: var(--dark-violet);
+    background-color: var(--metallic-grey);
     color: var(--off-white);
     font-weight: 500;
     letter-spacing: 0.5px;
     border-top: 1px solid var(--metallic-grey);
+    border-radius: 5px;
 }

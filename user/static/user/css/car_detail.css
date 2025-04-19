@@ -1,0 +1,26 @@
+
+
+.car-detail-page {
+  padding: 2rem 0;
+}
+
+.car-detail-page img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow-medium);
+}
+
+.car-detail-page h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--dark-violet);
+}
+
+.car-detail-page p {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+

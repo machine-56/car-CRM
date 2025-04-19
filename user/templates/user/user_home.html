@@ -1,12 +1,10 @@
 {% extends 'user/userBase.html' %}
 {% load static %}
-
 {% block title %}Dashboard | Aurelius Motors{% endblock %}
-
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'user/css/explore.css' %}">
 
-<!-- Hero Section -->
 <div class="hero-section">
   <div class="hero-overlay text-center text-white d-flex flex-column justify-content-center align-items-center">
     <h1>Engineered for Experience</h1>
@@ -15,7 +13,6 @@
   </div>
 </div>
 
-<!-- Dynamic Car Sections -->
 <div class="container my-5" id="car-sections">
   {% for cat, cat_cars in cars_by_category.items %}
     {% if cat_cars %}
@@ -28,21 +25,20 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ car.brand }} {{ car.name }}</h5>
             <p class="card-text mb-1">Price: ${{ car.price }}</p>
-            <span class="badge bg-secondary text-uppercase">{{ car.category }}</span>
-            <a href="#" class="btn btn-see-more mt-auto">See More</a>
+          
+            <a href="{% url 'car_detail' car.id %}" class="btn btn-see-more mt-auto">See More</a>
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
 
-    <!-- Gradient Divider -->
     <hr class="gradient-hr my-5">
+
     {% endif %}
   {% endfor %}
 </div>
 
-<!-- Closing Statement -->
 <div class="highlight-strip text-center py-4">
   <p class="m-0 fs-5 fw-medium">Crafted with Passion. Driven by Innovation.</p>
 </div>

@@ -1,0 +1,29 @@
+{% extends 'user/userBase.html' %}
+{% load static %}
+{% block title %}My Profile | Aurelius Motors{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'user/css/profile.css' %}">
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">My Profile</h2>
+  <div class="profile-card shadow">
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <div class="profile-image">
+            <img src="{{ user_data.profile_image.url }}" alt="Profile" class="img-fluid rounded-circle shadow">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Name:</strong> {{ user_data.first_name }} {{ user_data.last_name }}</li>
+            <li class="list-group-item"><strong>Username:</strong> {{ user_data.username }}</li>
+            <li class="list-group-item"><strong>Email:</strong> {{ user_data.email }}</li>
+            <li class="list-group-item"><strong>Phone:</strong> {{ user_data.phone }}</li>
+            <li class="list-group-item"><strong>Joined:</strong> {{ user_data.date_joined|date:"d M Y" }}</li>            
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

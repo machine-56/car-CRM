@@ -1,0 +1,38 @@
+{% extends 'user/userBase.html' %}
+{% load static %}
+{% block title %}Book a Test Drive | Aurelius Motors{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'user/css/test_drive.css' %}">
+
+<div class="container-fluid my-3 d-flex flex-column align-items-center">
+  <h2 class="text-center mb-3">Book a Test Drive</h2>
+
+  <form method="POST" class="test-drive-form">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="car" class="form-label">Select Car</label>
+      <select class="form-select" name="car" id="car" required>
+        <option value="" disabled selected>Select a car</option>
+        {% for car in cars %}
+        <option value="{{ car.id }}">{{ car.brand }} {{ car.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Preferred Date</label>
+      <input type="date" name="date" id="date" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="time" class="form-label">Preferred Time</label>
+      <input type="time" name="time" id="time" class="form-control" required>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-cstm">Book Test Drive</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

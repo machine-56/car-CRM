@@ -18,7 +18,7 @@ nav.navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 5;
 }
 
 .logo{
@@ -78,6 +78,37 @@ nav.navbar {
   flex-direction: column;
 }
 
+.btn-cstm {
+  background-color: var(--primary-red);
+  border: none;
+  color: white;
+  padding: 0.6rem 2rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-cstm:hover{
+  background-color: var(--accent-red);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-dark);
+}
+
+.btn-cstm:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-light);
+}
+
+.btn_w{
+  padding: 0.5rem 2rem;
+}
+
+.btn_w:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-dark);
+}
+
 .footer_main {
   margin-top: auto;
   background-color: #000000e5;
@@ -94,7 +125,7 @@ nav.navbar {
   .sidebar.mobile-show {
     display: block;
     position: fixed;
-    z-index: 1050;
+    z-index: 5;
     height: 100vh;
     width: 280px;
     left: 0;
