@@ -13,6 +13,7 @@ from django.utils import timezone
 from datetime import timedelta
 
 # Create your views here.
+@login_required(login_url = 'index')
 def user_home(request):
     categories = ['sedan', 'suv', 'sports', 'electric', 'luxury']
     cars_by_category = OrderedDict()
@@ -25,7 +26,7 @@ def user_home(request):
         'cars_by_category': cars_by_category
     })
 
-@login_required
+@login_required(login_url = 'index')
 def car_detail(request, car_id):
     car = Car.objects.get(id=car_id)
 
@@ -40,7 +41,7 @@ def car_detail(request, car_id):
 
     return render(request, 'user/car_detail.html', {'car': car})
 
-@login_required
+@login_required(login_url = 'index')
 def my_orders(request):
     orders = OrderedCar.objects.filter(user=request.user).select_related('car')
 
@@ -79,7 +80,7 @@ def my_orders(request):
 
     return render(request, 'user/my_orders.html', {'orders': orders})
 
-@login_required
+@login_required(login_url = 'index')
 def book_test_drive(request):
     cars = Car.objects.filter(available=True)
 
@@ -120,7 +121,7 @@ def book_test_drive(request):
 
     return render(request, 'user/book_test_drive.html', {'cars': cars})
 
-@login_required
+@login_required(login_url = 'index')
 def profile_view(request):
     user = request.user
     return render(request, 'user/profile.html', {'user_data': user})
