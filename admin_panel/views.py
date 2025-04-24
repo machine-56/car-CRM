@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import Car
 # Create your views here.
 
-def adindex(request):
+def admin_home(request):
     return render(request, 'admin_panel/ad_home.html')
 
 def view_all_cars(request):
@@ -34,3 +34,7 @@ def edit_car(request, id):
         return redirect('view_all_cars')
 
     return render(request, 'admin_panel/edit_car.html', {'car': car})
+
+
+def showroom_performance(request):
+    return render(request, 'admin_panel/performance.html')

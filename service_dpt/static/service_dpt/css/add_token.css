@@ -1,0 +1,20 @@
+
+.form_div{
+    border: 1px solid var(--metallic-silver);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form .form-label {
+    color: var(--dark-violet);
+}
+
+form .form-control, form .form-select {
+    border: 1px solid var(--metallic-grey);
+    border-radius: 5px;
+}
+
+form .btn-dark {
+    background-color: var(--primary-red);
+    border: none;
+}

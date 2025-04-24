@@ -1,0 +1,49 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Order List{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'telecaller_dpt/css/order_list.css' %}">
+
+<div class="container-fluid mt-4">
+  <h3 class="mb-4 text-center">Customer Orders</h3>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Car Model</th>
+          <th>Order Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#ORD12345</td>
+          <td>Ethan Walker</td>
+          <td>Aurelius ArcLite XR</td>
+          <td>2025-04-20</td>
+          <td><span class="badge bg-warning text-dark">Pending</span></td>
+        </tr>
+        <tr>
+          <td>#ORD12346</td>
+          <td>Jane Doe</td>
+          <td>Aurelius Inferno Z1</td>
+          <td>2025-04-19</td>
+          <td><span class="badge bg-success">Processing</span></td>
+        </tr>
+        <tr>
+          <td>#ORD12347</td>
+          <td>Liam Carter</td>
+          <td>Aurelius Imperial Drive</td>
+          <td>2024-04-18</td>
+          <td><span class="badge bg-secondary">Delivered</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

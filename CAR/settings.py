@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'user',
     'sales_dpt',
     'telecaller_dpt',
-    # 'service_dpt',
+    'service_dpt',
 ]
 
 MIDDLEWARE = [

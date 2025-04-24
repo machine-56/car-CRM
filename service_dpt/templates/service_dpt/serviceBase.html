@@ -52,35 +52,21 @@
       <h5 class="text-uppercase mb-4">Menu</h5>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/user/' %}activein{% endif %}" href="{% url 'user_home' %}">
+          <a class="nav-link text-white {% if request.path == '/service/' %}activein{% endif %}" href="{% url 'service_home' %}">
             <i class="fas fa-home me-2"></i>Dashboard
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/user/orders/' %}activein{% endif %}" href="{% url 'my_orders' %}">
-            <i class="fas fa-car me-2"></i>My Orders
+        </li>   
+        <li>
+          <a class="nav-link text-white {% if request.path == '/service/add/' %}activein{% endif %}" href="{% url 'add_service_token' %}">
+              <i class="fas fa-plus-circle me-2"></i>Add Token
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/user/test-drive/' %}activein{% endif %}" href="{% url 'book_test_drive' %}">
-            <i class="fas fa-calendar-check me-2"></i>Test Drive
+        <li>
+          <a class="nav-link text-white {% if request.path == '/service/flow/' %}activein{% endif %}" href="{% url 'service_flow' %}">
+              <i class="fas fa-project-diagram me-2"></i>Service Flow
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/user/service-status/' %}activein{% endif %}" href="{% url 'service_status' %}">
-              <i class="fas fa-clipboard-list me-2"></i>Service Status
-          </a>
-        </li>      
-        <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/user/profile/' %}activein{% endif %}" href="{% url 'profile_view' %}">
-            <i class="fas fa-user me-2"></i>Profile
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/user/settings/' %}activein{% endif %}" href="#">
-            <i class="fas fa-cog me-2"></i>Settings
-          </a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link text-white" href="{% url 'login_fn' %}">
             <i class="fas fa-sign-out-alt me-2"></i>Logout

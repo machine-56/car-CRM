@@ -1,4 +1,4 @@
-{% extends 'telecaller_dpt/telecallerBase.html' %}
+{% extends 'sales_dpt/salesBase.html' %}
 {% load static %}
 
 {% block title %}Telecaller Dashboard{% endblock %}
@@ -7,101 +7,13 @@
 <link rel="stylesheet" href="{% static 'telecaller_dpt/css/dashboard.css' %}">
 
 <div class="container-fluid mt-4">
-  <div id="customerGrid" class="row g-3">
-    
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
-        <div class="card-body">
-          <h5 class="card-title">Rahul Sharma</h5>
-          <p>Phone: +91 9876543210</p>
-          <p>Status: <span class="badge bg-primary">New Lead</span></p>
-          <p>Handled By: <span class="fw-bold">John Doe</span></p>
-          <p>Closed By: <span class="text-muted">N/A</span></p>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-md-6 draggable-card" draggable="true" data-status="new-lead">
-      <div class="card customer-card">
+  <!-- New Lead Section -->
+  <div class="lead-section" data-status="new-lead">
+    <h5 class="section-title">New Lead</h5>
+    <div class="zone" id="zone-new-lead">
+      
+      <div class="customer-card card draggable-card" draggable="true">
         <div class="card-body">
           <h5 class="card-title">Rahul Sharma</h5>
           <p>Phone: +91 9876543210</p>
@@ -110,10 +22,51 @@
           <p>Closed By: <span class="text-muted">N/A</span></p>
         </div>
       </div>
+      
+      <div class="customer-card card draggable-card" draggable="true">
+        <div class="card-body">
+          <h5 class="card-title">Rahul Sharma</h5>
+          <p>Phone: +91 9876543210</p>
+          <p>Status: <span class="badge bg-primary">New Lead</span></p>
+          <p>Handled By: <span class="fw-bold">John Doe</span></p>
+          <p>Closed By: <span class="text-muted">N/A</span></p>
+        </div>
+      </div>
+      
+      <div class="customer-card card draggable-card" draggable="true">
+        <div class="card-body">
+          <h5 class="card-title">Rahul Sharma</h5>
+          <p>Phone: +91 9876543210</p>
+          <p>Status: <span class="badge bg-primary">New Lead</span></p>
+          <p>Handled By: <span class="fw-bold">John Doe</span></p>
+          <p>Closed By: <span class="text-muted">N/A</span></p>
+        </div>
+      </div>
+      
+      
     </div>
-
   </div>
+
+  <!-- Cold Call Section -->
+  <div class="lead-section" data-status="cold-call">
+    <h5 class="section-title">Cold Call</h5>
+    <div class="zone" id="zone-cold-call"></div>
+  </div>
+
+  <!-- Follow-Up Section -->
+  <div class="lead-section" data-status="follow-up">
+    <h5 class="section-title">Follow-Up</h5>
+    <div class="zone" id="zone-follow-up"></div>
+  </div>
+
+  <!-- Deal Closed Section -->
+  <div class="lead-section" data-status="deal-closed">
+    <h5 class="section-title">Deal Closed</h5>
+    <div class="zone" id="zone-deal-closed"></div>
+  </div>
+
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script src="{% static 'telecaller_dpt/js/dashboard.js' %}"></script>
 {% endblock %}

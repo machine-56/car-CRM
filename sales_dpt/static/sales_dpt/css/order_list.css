@@ -1,0 +1,19 @@
+
+h3 {
+    color: var(--dark-violet);
+  }
+  
+  .table thead th {
+    white-space: nowrap;
+  }
+  
+  .table tbody td {
+    white-space: nowrap;
+  }
+  
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.6em;
+    border-radius: 0.5rem;
+  }
+  

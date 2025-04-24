@@ -1,43 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.draggable-card');
-  const zones = document.querySelectorAll('.status-zone');
-
-  let draggedCard = null;
-
-  cards.forEach(card => {
-    card.addEventListener('dragstart', () => {
-      draggedCard = card;
-      setTimeout(() => card.classList.add('invisible'), 0);
-    });
-
-    card.addEventListener('dragend', () => {
-      card.classList.remove('invisible');
-      draggedCard = null;
-    });
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  const zones = document.querySelectorAll('.zone');
 
   zones.forEach(zone => {
-    zone.addEventListener('dragover', e => e.preventDefault());
+    new Sortable(zone, {
+      group: 'cards',
+      animation: 150,
+      onAdd: function (evt) {
+        const card = evt.item;
+        const parentZone = zone.parentElement;
+        const newStatus = parentZone.getAttribute('data-status');
+        const badge = card.querySelector('.badge');
 
-    zone.addEventListener('dragenter', e => {
-      e.preventDefault();
-      zone.classList.add('drag-over');
-    });
+        // Reset badge
+        badge.className = 'badge';
+        if (newStatus === 'new-lead') badge.classList.add('bg-primary');
+        if (newStatus === 'cold-call') badge.classList.add('badge-cold-call');
+        if (newStatus === 'follow-up') badge.classList.add('badge-follow-up');
+        if (newStatus === 'deal-closed') badge.classList.add('badge-deal-closed');
 
-    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-
-    zone.addEventListener('drop', () => {
-      if (draggedCard) {
-        const badge = draggedCard.querySelector('.badge');
-        const status = zone.dataset.status;
-    
-        badge.textContent = zone.textContent;
-        badge.className = `badge badge-${status}`;
-        
-        zone.classList.remove('drag-over');
+        badge.textContent = newStatus.replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
       }
     });
   });
 });
-
-

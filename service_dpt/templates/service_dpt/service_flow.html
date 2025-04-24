@@ -1,0 +1,87 @@
+{% extends 'service_dpt/serviceBase.html' %}
+{% load static %}
+
+{% block title %}Service Flow{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'service_dpt/css/flow.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
+<div class="container-fluid mt-4">
+    <div class="d-flex flex-column" id="kanban-board">
+
+        <!-- New Vehicles -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">New Vehicles</h5>
+            <div class="kanban-list" id="new-vehicles">
+                <div class="kanban-card" data-vehicle="MH12AB1234" data-customer="John Doe" data-department="New Vehicles">
+                    <p><strong>MH12AB1234</strong></p>
+                    <p>John Doe</p>
+                </div>
+                <div class="kanban-card" data-vehicle="DL8CAF5678" data-customer="Jane Smith" data-department="New Vehicles">
+                    <p><strong>DL8CAF5678</strong></p>
+                    <p>Jane Smith</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paint Department -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">Paint Department</h5>
+            <div class="kanban-list" id="paint-department">
+                <div class="kanban-card" data-vehicle="KA03CD4321" data-customer="Mike Johnson" data-department="Paint Department">
+                    <p><strong>KA03CD4321</strong></p>
+                    <p>Mike Johnson</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Repairs -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">Body Repairs</h5>
+            <div class="kanban-list" id="body-repairs">
+                
+            </div>
+        </div>
+
+        <!-- Accident Repairs -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">Accident Repairs</h5>
+            <div class="kanban-list" id="accident-repairs">
+                
+            </div>
+        </div>
+
+        <!-- Electrical Department -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">Electrical Department</h5>
+            <div class="kanban-list" id="electrical-department">
+                <div class="kanban-card" data-vehicle="TN22EF9876" data-customer="Ayesha Khan" data-department="Electrical Department">
+                    <p><strong>TN22EF9876</strong></p>
+                    <p>Ayesha Khan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insurance Department -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">Insurance Department</h5>
+            <div class="kanban-list" id="insurance-department">
+                
+            </div>
+        </div>
+
+        <!-- Completed -->
+        <div class="kanban-column mb-4">
+            <h5 class="text-center">Completed</h5>
+            <div class="kanban-list" id="completed">
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="{% static 'service_dpt/js/flow.js' %}"></script>
+{% endblock %}

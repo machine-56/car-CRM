@@ -1,0 +1,42 @@
+{% extends 'service_dpt/serviceBase.html' %}
+{% load static %}
+
+{% block title %}Add Service Token{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'service_dpt/css/add_token.css' %}">
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Generate Service Token</h2>
+    <form method="post" class="p-4 shadow-sm rounded form_div">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="customerName" class="form-label">Customer Name</label>
+            <input type="text" class="form-control" id="customerName" name="customerName" required>
+        </div>
+        <div class="mb-3">
+            <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+            <input type="text" class="form-control" id="vehicleNumber" name="vehicleNumber" required>
+        </div>
+        <div class="mb-3">
+            <label for="serviceType" class="form-label">Service Type</label>
+            <select class="form-select" id="serviceType" name="serviceType" required>
+                <option value="">Choose...</option>
+                <option value="Paint">Paint</option>
+                <option value="Body Repairs">Body Repairs</option>
+                <option value="Accident Repairs">Accident Repairs</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Insurance">Insurance</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Generate Token</button>
+    </form>
+
+    {% if token %}
+    <div class="alert alert-success mt-4 text-center" role="alert">
+        <strong>Token Generated:</strong> {{ token }}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

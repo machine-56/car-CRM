@@ -9,6 +9,9 @@ def upload_customers(request):
     return render(request, 'sales_dpt/upload_customers.html')
 
 
+def order_list(request):
+    return render(request, 'sales_dpt/order_list.html')
+
 def stocks(request):
     return render(request, 'sales_dpt/stock.html')
 
@@ -51,3 +54,7 @@ def staff_profile(request, id):
     if not staff:
         return HttpResponseNotFound("Staff not found")
     return render(request, 'sales_dpt/staff_profile.html', {'user': staff})
+
+
+def telecaller_home(request):
+    return render(request, 'telecaller_dpt/dashboard.html')

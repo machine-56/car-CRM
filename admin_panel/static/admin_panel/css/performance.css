@@ -1,0 +1,11 @@
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+}
+
+h5 {
+    color: var(--dark-violet);
+    margin-bottom: 15px;
+}

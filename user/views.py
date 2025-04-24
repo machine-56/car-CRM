@@ -121,6 +121,19 @@ def book_test_drive(request):
 
     return render(request, 'user/book_test_drive.html', {'cars': cars})
 
+def service_status(request):
+    status = None
+    if request.method == 'POST':
+        token = request.POST.get('serviceToken')
+        # Dummy status
+        dummy_status = {
+            '8HG5J2KL': 'In Paint Department',
+            'DL8CAF56': 'Completed',
+            'MH12AB12': 'In Electrical Department',
+        }
+        status = dummy_status.get(token.upper(), 'Token not found. Please check and try again.')
+    return render(request, 'user/service_status.html', {'status': status})
+
 @login_required(login_url = 'index')
 def profile_view(request):
     user = request.user

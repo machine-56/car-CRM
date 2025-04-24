@@ -1,0 +1,27 @@
+{% extends 'user/userBase.html' %}
+{% load static %}
+
+{% block title %}Service Status{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'user/css/service_status.css' %}">
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Check Your Service Status</h2>
+    <form method="post" class="p-4 shadow-sm rounded">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="serviceToken" class="form-label">Service Token</label>
+            <input type="text" class="form-control" id="serviceToken" name="serviceToken" required>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Check Status</button>
+    </form>
+
+    {% if status %}
+    <div class="alert alert-info mt-4 text-center" role="alert">
+        <strong>Status:</strong> {{ status }}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

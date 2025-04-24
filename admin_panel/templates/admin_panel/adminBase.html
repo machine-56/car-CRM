@@ -28,9 +28,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-              <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'adindex' %}">Home</a>
-              <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'view_all_cars' %}">Cars</a>
-              <a class="nav-link {% if request.path == '/login/' %}active{% endif %}" href="{% url 'login_fn' %}">Login</a>
+              <a class="nav-link {% if request.path == '/ad/' %}active{% endif %}" href="{% url 'admin_home' %}">Home</a>
+              <a class="nav-link {% if request.path == '/ad/car/' %}active{% endif %}" href="{% url 'view_all_cars' %}">Cars</a>
+              <a class="nav-link {% if request.path == '/ad/performance/' %}active{% endif %}" href="{% url 'showroom_performance' %}">Perfomance</a>
+              <a class="nav-link" href="{% url 'logout_fn' %}">Logout</a>
             </div>
           </div>
         </div>
