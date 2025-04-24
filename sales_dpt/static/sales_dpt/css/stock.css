@@ -1,0 +1,10 @@
+
+table thead th {
+    background-color: var(--dark-violet);
+    color: var(--off-white);
+  }
+  
+  .badge.bg-danger {
+    background-color: var(--primary-red) !important;
+  }
+  

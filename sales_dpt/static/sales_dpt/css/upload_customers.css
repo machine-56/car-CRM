@@ -1,0 +1,11 @@
+
+.upload-section {
+    width: 50%;
+  }
+  
+  @media (max-width: 768px) {
+    .upload-section {
+      width: 95%;
+    }
+  }
+  

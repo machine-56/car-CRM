@@ -1,0 +1,84 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Staff Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'sales_dpt/css/staff_profile.css' %}">
+
+<div class="container mt-5">
+  <!-- Profile Header -->
+  <div class="row mb-4 align-items-center">
+    <div class="col-md-2 text-center">
+      <img src="{% static 'images/default_profile.png' %}" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px;">
+    </div>
+    <div class="col-md-10">
+      <h3>{{ user.first_name }} {{ user.last_name }}{% if not user.first_name %}John Doe{% endif %}</h3>
+      <p class="text-muted">{{ user.role }}{% if not user.role %}Senior Sales Executive{% endif %}</p>
+    </div>
+  </div>
+
+  <!-- Attendance Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      Attendance
+    </div>
+    <div class="card-body">
+      <p>Status: <span class="badge {% if user.attendance.status == 'Present' %}bg-success{% else %}bg-danger{% endif %}">
+        {{ user.attendance.status|default:"Present" }}</span>
+      </p>
+      <p>Total Days Worked: {{ user.attendance.worked_days|default:"220" }}</p>
+      <p>Leaves Taken: {{ user.attendance.leaves|default:"10" }}</p>
+    </div>
+  </div>
+
+  <!-- Performance Graph Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      Performance Overview
+    </div>
+    <div class="card-body">
+      <canvas id="performanceChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Business Details Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      Business Details
+    </div>
+    <div class="card-body">
+      <p>Leads Handled: {{ user.business.leads|default:"150" }}</p>
+      <p>Deals Closed: {{ user.business.deals|default:"45" }}</p>
+      <p>Current Active Leads: {{ user.business.active|default:"12" }}</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const performanceData = {{ user.performance|default:"[12, 19, 10, 14, 17]"|safe }};
+  const ctx = document.getElementById('performanceChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'Sales',
+        data: performanceData,
+        fill: false,
+        borderColor: '#ff0000',
+        tension: 0.4,
+        pointBackgroundColor: '#ff0000',
+        pointRadius: 5,
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+{% endblock %}

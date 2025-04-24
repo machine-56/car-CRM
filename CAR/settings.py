@@ -29,6 +29,9 @@ INSTALLED_APPS = [
     'accounts',
     'admin_panel',
     'user',
+    'sales_dpt',
+    'telecaller_dpt',
+    # 'service_dpt',
 ]
 
 MIDDLEWARE = [

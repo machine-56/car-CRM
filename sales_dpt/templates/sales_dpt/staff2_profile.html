@@ -1,0 +1,77 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Staff Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'sales_dpt/css/staff_profile.css' %}">
+
+<div class="container mt-5">
+  <div class="row mb-4 align-items-center">
+    <div class="col-md-2 text-center">
+      <img src="{% static 'images/default_profile.png' %}" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px;">
+    </div>
+    <div class="col-md-10">
+      <h3>{{ user.first_name }} {{ user.last_name }} {% if not user.first_name %}Alex Johnson{% endif %}</h3>
+      <p class="text-muted">{{ user.role }} {% if not user.role %}Sales Manager{% endif %}</p>
+    </div>
+  </div>
+
+  <!-- Attendance Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      Attendance
+    </div>
+    <div class="card-body">
+      <p>Status: <span class="badge bg-success">Present</span></p>
+      <p>Total Days Worked: 240</p>
+      <p>Leaves Taken: 5</p>
+    </div>
+  </div>
+
+  <!-- Performance Graph Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      Performance Overview
+    </div>
+    <div class="card-body">
+      <canvas id="performanceChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Business Details Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+      Business Details
+    </div>
+    <div class="card-body">
+      <p>Leads Handled: 200</p>
+      <p>Deals Closed: 70</p>
+      <p>Current Active Leads: 25</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('performanceChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'Sales',
+        data: [15, 20, 18, 22, 25],
+        backgroundColor: 'rgba(255, 0, 0, 0.7)'
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+{% endblock %}

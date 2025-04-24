@@ -1,0 +1,11 @@
+
+.staff-card {
+    box-shadow: var(--shadow-medium);
+    border: none;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .staff-card:hover {
+    transform: translateY(-5px);
+  }
+  

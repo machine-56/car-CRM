@@ -1,0 +1,51 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Staffs{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'sales_dpt/css/staffs.css' %}">
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Our Sales Team</h2>
+  <div class="row g-4 justify-content-center">
+    
+    <!-- Staff 1 -->
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="card staff-card text-center">
+        <img src="{% static 'images/default_profile.png' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 80px; height: 80px;" alt="John Doe">
+        <div class="card-body">
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Senior Sales Executive</p>
+          <a href="{% url 'staff_profile' 1 %}" class="btn btn-outline-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Staff 2 -->
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="card staff-card text-center">
+        <img src="{% static 'images/default_profile.png' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 80px; height: 80px;" alt="Jane Smith">
+        <div class="card-body">
+          <h5 class="card-title">Jane Smith</h5>
+          <p class="card-text">Sales Associate</p>
+          <a href="{% url 'staff_profile' 2 %}" class="btn btn-outline-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Staff 3 -->
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="card staff-card text-center">
+        <img src="{% static 'images/default_profile.png' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width: 80px; height: 80px;" alt="Alex Johnson">
+        <div class="card-body">
+          <h5 class="card-title">Alex Johnson</h5>
+          <p class="card-text">Sales Manager</p>
+          <a href="{% url 'staff_profile' 3 %}" class="btn btn-outline-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

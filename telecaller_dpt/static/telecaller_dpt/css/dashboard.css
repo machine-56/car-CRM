@@ -1,0 +1,43 @@
+
+
+.customer-card {
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.2s ease-in-out;
+}
+
+.badge {
+  color: #fff !important;
+  padding: 0.5em 0.75em;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.badge-new-lead {
+  background-color: #0d6efd;
+}
+
+.badge-cold-call {
+  background-color: #ffc107;
+  color: #000 !important;
+}
+
+.badge-follow-up {
+  background-color: #0dcaf0;
+}
+
+.badge-deal-closed {
+  background-color: #198754;
+}
+
+
+.customer-card:hover {
+  transform: translateY(-5px);
+}
+
+
+@media (max-width: 992px) {
+
+  .main {
+    padding-bottom: 90px;
+  }
+}

@@ -9,4 +9,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('user/', include('user.urls')),
     path('ad/', include('admin_panel.urls')),
+    path('sales/', include('sales_dpt.urls')),
+    path('telecaller/', include('telecaller_dpt.urls')),
+    # path('serivce/', include('serivce_dpt.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

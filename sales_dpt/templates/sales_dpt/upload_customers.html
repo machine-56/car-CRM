@@ -1,0 +1,16 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Upload Customers{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'sales_dpt/css/upload_customers.css' %}">
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Upload Customer List</h2>
+  <div class="upload-section mx-auto">
+    <input type="file" class="form-control mb-3" id="customerFile" accept=".xlsx, .xls">
+    <button class="btn btn-cstm w-100" id="uploadBtn">Upload File</button>
+  </div>
+</div>
+{% endblock %}

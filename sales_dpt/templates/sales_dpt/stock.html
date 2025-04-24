@@ -1,0 +1,46 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Stock Overview{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'sales_dpt/css/stocks.css' %}">
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Spare Parts Stock</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Part Name</th>
+          <th>Category</th>
+          <th>Stock Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dummy Data -->
+        <tr>
+          <td>Brake Pads</td>
+          <td>Braking System</td>
+          <td><span class="badge bg-danger">5</span></td> <!-- Low Stock -->
+        </tr>
+        <tr>
+          <td>Air Filter</td>
+          <td>Engine</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>Oil Filter</td>
+          <td>Engine</td>
+          <td><span class="badge bg-danger">8</span></td> <!-- Low Stock -->
+        </tr>
+        <tr>
+          <td>Headlight Bulb</td>
+          <td>Electrical</td>
+          <td>20</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
