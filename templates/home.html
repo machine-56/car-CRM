@@ -106,8 +106,10 @@
       <a href="{% url 'login_fn' %}" class="btn btn-cstm btn-lg">Enter the Showroom</a>
     </div>
 
-    <div class="cta-service">
-      <a href="{% url 'service_home' %}"></a>
+    <div class="my-4 text-center">
+        <a href="{% url 'service_home' %}" class="btn btn-danger">Service Department</a>
+        <a href="{% url 'sales_home' %}" class="btn btn-outline-danger">Sales Department</a>
     </div>
+  
 </div>
 {% endblock %}
