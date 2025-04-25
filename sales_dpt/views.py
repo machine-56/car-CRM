@@ -56,7 +56,7 @@ def staffs(request):
 
 from django.http import HttpResponseNotFound
 
-def staff_profile(request, id):
+def sales_staff_profile(request, id):
     staff_data = {
         1: {
             'first_name': 'John',
