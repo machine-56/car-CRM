@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 def sales_home(request):
@@ -6,8 +6,42 @@ def sales_home(request):
 
 
 def upload_customers(request):
+    if request.method == 'POST':
+        return redirect('view_customer')
     return render(request, 'sales_dpt/upload_customers.html')
 
+def view_customer(request):
+    customers_data = [
+        {
+            'name': 'John Doe',
+            'email': 'john.doe@example.com',
+            'phone': '+91 98765 43210',
+            'interested_car': 'Aurelius ArcLite XR',
+            'location': 'Mumbai'
+        },
+        {
+            'name': 'Jane Smith',
+            'email': 'jane.smith@example.com',
+            'phone': '+91 91234 56789',
+            'interested_car': 'Nil',
+            'location': 'Delhi'
+        },
+        {
+            'name': 'Mike Johnson',
+            'email': 'mike.johnson@example.com',
+            'phone': '+91 99887 76655',
+            'interested_car': 'Aurelius Imperial Drive',
+            'location': 'Bengaluru'
+        },
+        {
+            'name': 'Ayesha Khan',
+            'email': 'ayesha.khan@example.com',
+            'phone': '+91 97654 32109',
+            'interested_car': 'Aurelius Inferno Z1',
+            'location': 'Chennai'
+        }
+    ]
+    return render(request, 'sales_dpt/view_customers.html', {'customers': customers_data})
 
 def order_list(request):
     return render(request, 'sales_dpt/order_list.html')

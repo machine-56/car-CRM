@@ -1,0 +1,31 @@
+
+h2 {
+    color: var(--dark-violet);
+    font-weight: bold;
+}
+
+.card {
+    background-color:white;
+    border-radius: 10px;
+    border: 1px solid var(--metallic-silver);
+    box-shadow: var(--shadow-medium);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.card h4 {
+    color: var(--dark-violet);
+}
+
+.card p {
+    color: var(--dark-violet);
+    margin-bottom: 5px;
+}
+
+.text-primary {
+    color: var(--primary-red) !important;
+}
+
+hr {
+    border-top: 2px solid var(--metallic-grey);
+}

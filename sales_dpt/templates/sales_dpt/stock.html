@@ -6,10 +6,21 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'sales_dpt/css/stocks.css' %}">
 
-<div class="container mt-5">
+<div class="container mt-5 position-relative">
   <h2 class="mb-4 text-center">Spare Parts Stock</h2>
+
+  <!-- Filter Dropdown -->
+  <div class="filter-dropdown position-absolute top-0 end-0 mt-2 me-2 z-2">
+    <select id="filterCategory" class="form-select">
+      <option value="all">Show All</option>
+      <option value="Braking System">Braking System</option>
+      <option value="Engine">Engine</option>
+      <option value="Electrical">Electrical</option>
+    </select>
+  </div>
+
   <div class="table-responsive">
-    <table class="table table-bordered table-hover text-center align-middle">
+    <table class="table table-bordered table-hover text-center align-middle" id="stockTable">
       <thead class="table-dark">
         <tr>
           <th>Part Name</th>
@@ -18,23 +29,22 @@
         </tr>
       </thead>
       <tbody>
-
-        <tr>
+        <tr data-category="Braking System">
           <td>Brake Pads</td>
           <td>Braking System</td>
-          <td><span class="badge bg-danger">5</span></td> <!-- Low Stock -->
+          <td><span class="badge bg-danger">5</span></td>
         </tr>
-        <tr>
+        <tr data-category="Engine">
           <td>Air Filter</td>
           <td>Engine</td>
           <td>18</td>
         </tr>
-        <tr>
+        <tr data-category="Engine">
           <td>Oil Filter</td>
           <td>Engine</td>
-          <td><span class="badge bg-danger">8</span></td> <!-- Low Stock -->
+          <td><span class="badge bg-danger">8</span></td>
         </tr>
-        <tr>
+        <tr data-category="Electrical">
           <td>Headlight Bulb</td>
           <td>Electrical</td>
           <td>20</td>
@@ -43,4 +53,6 @@
     </table>
   </div>
 </div>
+
+<script src="{% static 'sales_dpt/js/stocks.js' %}"></script>
 {% endblock %}

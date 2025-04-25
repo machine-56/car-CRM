@@ -1,0 +1,32 @@
+{% extends 'service_dpt/serviceBase.html' %}
+{% load static %}
+
+{% block title %}Token Details{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'service_dpt/css/token_view.css' %}">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Service Token Details</h2>
+
+    <div class="card p-4 shadow-sm">
+        <h4 class="mb-3">Token: <span class="text-primary">{{ data.token }}</span></h4>
+        <p><strong>Customer Name:</strong> {{ data.customer_name }}</p>
+        <p><strong>Phone:</strong> {{ data.phone }}</p>
+        <p><strong>Email:</strong> {{ data.email }}</p>
+        <p><strong>Vehicle Number:</strong> {{ data.vehicle }}</p>
+        <p><strong>Estimated Delivery Time:</strong> {{ data.delivery_time }}</p>
+        <p><strong>Total Price:</strong> ₹{{ data.total_price }}</p>
+
+        <hr>
+        <h5>Work Details:</h5>
+        {% for section, details in data.works.items %}
+        <div class="mb-3">
+            <strong>{{ section }}:</strong>
+            <p>Work: {{ details.work|default:"-" }}</p>
+            <p>Price: ₹{{ details.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

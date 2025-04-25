@@ -8,9 +8,10 @@
 
 <div class="container mt-5">
   <h2 class="mb-4 text-center">Upload Customer List</h2>
-  <div class="upload-section mx-auto">
-    <input type="file" class="form-control mb-3" id="customerFile" accept=".xlsx, .xls">
-    <button class="btn btn-cstm w-100" id="uploadBtn">Upload File</button>
-  </div>
+  <form method="post" enctype="multipart/form-data" class="upload-section mx-auto" style="max-width: 500px;">
+    {% csrf_token %}
+    <input type="file" name="customer_file" class="form-control mb-3" accept=".xlsx, .xls" required>
+    <button type="submit" class="btn btn-cstm w-100">Upload File</button>
+  </form>
 </div>
 {% endblock %}

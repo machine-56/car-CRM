@@ -122,17 +122,66 @@ def book_test_drive(request):
     return render(request, 'user/book_test_drive.html', {'cars': cars})
 
 def service_status(request):
-    status = None
     if request.method == 'POST':
-        token = request.POST.get('serviceToken')
-        # Dummy status
-        dummy_status = {
-            '8HG5J2KL': 'In Paint Department',
-            'DL8CAF56': 'Completed',
-            'MH12AB12': 'In Electrical Department',
-        }
-        status = dummy_status.get(token.upper(), 'Token not found. Please check and try again.')
-    return render(request, 'user/service_status.html', {'status': status})
+        token = request.POST.get('serviceToken').upper()
+
+        valid_tokens = ['8HG5J2KL', 'DL8CAF56', 'MH12AB12']
+        if token in valid_tokens:
+            request.session['service_token'] = token
+            return redirect('status_view')
+        else:
+            return render(request, 'user/service_status.html', {'error': 'Token not found. Please try again.'})
+    return render(request, 'user/service_status.html')
+
+def status_view(request):
+    token = request.session.get('service_token')
+    if not token:
+        return redirect('service_status')
+    
+    dummy_data = {
+    '8HG5J2KL': {
+        'customer': 'John Doe',
+        'vehicle': 'MH12AB1234',
+        'delivery_time': '7 Days',
+        'total_price': 5000,
+        'status': [
+            {'department': 'General Work', 'completed': True},
+            {'department': 'Paint Department', 'completed': False},
+            {'department': 'Body Repairs', 'completed': False},
+            {'department': 'Accident Repairs', 'completed': False},
+            {'department': 'Electrical', 'completed': False},
+        ]
+    },
+    'DL8CAF56': {
+        'customer': 'John Doe',
+        'vehicle': 'DL8CAF5678',
+        'delivery_time': '5 Days',
+        'total_price': 8500,
+        'status': [
+            {'department': 'General Work', 'completed': True},
+            {'department': 'Paint Department', 'completed': True},
+            {'department': 'Body Repairs', 'completed': True},
+            {'department': 'Accident Repairs', 'completed': False},
+            {'department': 'Electrical', 'completed': False},
+        ]
+    },
+    'MH12AB12': {
+        'customer': 'John Doe',
+        'vehicle': 'KA03CD4321',
+        'delivery_time': 'Completed',
+        'total_price': 12000,
+        'status': [
+            {'department': 'General Work', 'completed': True},
+            {'department': 'Paint Department', 'completed': True},
+            {'department': 'Body Repairs', 'completed': True},
+            {'department': 'Accident Repairs', 'completed': True},
+            {'department': 'Electrical', 'completed': True},
+        ]
+    }}
+    
+    data = dummy_data.get(token)
+    return render(request, 'user/status_view.html', {'data': data})
+
 
 @login_required(login_url = 'index')
 def profile_view(request):

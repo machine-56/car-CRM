@@ -1,0 +1,23 @@
+{% extends 'service_dpt/serviceBase.html' %}
+{% load static %}
+
+{% block title %}{{ staff.name }}'s Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'service_dpt/css/staff.css' %}">
+
+<div class="container mt-5">
+    <div class="card p-4 shadow-sm staff-profile-card">
+        <div class="text-center">
+            <img src="{% static staff.image %}" alt="{{ staff.name }}" class="rounded-circle mb-3" style="width:120px; height:120px; object-fit:cover;">
+            <h4>{{ staff.name }}</h4>
+            <p class="text-muted">{{ staff.role }}</p>
+        </div>
+        <hr>
+        <p><strong>Experience:</strong> {{ staff.experience }}</p>
+        <p><strong>Tasks Completed:</strong> {{ staff.tasks_completed }}</p>
+        <p><strong>Rating:</strong> ⭐ {{ staff.rating }}</p>
+        <a href="{% url 'staff_performance' %}" class="btn btn-temp mt-3">Back to Staff List</a>
+    </div>
+</div>
+{% endblock %}

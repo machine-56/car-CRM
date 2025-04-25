@@ -7,4 +7,12 @@ table thead th {
   .badge.bg-danger {
     background-color: var(--primary-red) !important;
   }
-  
+  .filter-dropdown {
+    width: 200px;
+    z-index: 2;
+}
+
+#filterCategory {
+    border: 1px solid var(--metallic-grey);
+    border-radius: 5px;
+}

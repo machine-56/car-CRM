@@ -1,20 +1,30 @@
 
-.form_div{
+h2 {
+    color: var(--dark-violet);
+    font-weight: bold;
+}
+
+.form_div {
+    background-color: white;
+    border-radius: 10px;
     border: 1px solid var(--metallic-silver);
+    box-shadow: var(--shadow-medium);
     max-width: 600px;
     margin: 0 auto;
 }
 
-form .form-label {
+.form_div .form-label {
     color: var(--dark-violet);
 }
 
-form .form-control, form .form-select {
+textarea {
+    resize: vertical;
     border: 1px solid var(--metallic-grey);
     border-radius: 5px;
 }
 
-form .btn-dark {
-    background-color: var(--primary-red);
-    border: none;
+input[type="number"] {
+    border: 1px solid var(--metallic-grey);
+    border-radius: 5px;
 }
+

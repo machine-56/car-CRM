@@ -1,0 +1,49 @@
+{% extends 'user/userBase.html' %}
+{% load static %}
+
+{% block title %}Service Progress{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'user/css/status_view.css' %}">
+
+<div class="container mt-5">
+    <div class="status-timeline p-4">
+        <div class="d-flex justify-content-between">
+            <h4>Customer: {{ data.customer }}</h4>
+            <div class="text-end">
+                <p><strong>Vehicle:</strong> {{ data.vehicle }}</p>
+                <p><strong>Est. Delivery:</strong> {{ data.delivery_time }}</p>
+                <p><strong>Total Price:</strong> ₹{{ data.total_price }}</p>
+            </div>
+        </div>
+
+        <div class="progress-bar-vertical mt-4">
+            <div class="progress-fill"></div>
+            <div class="progress-steps">
+                {% for step in data.status %}
+                <div class="step {% if step.completed %}completed{% endif %}">
+                    <p>{{ step.department }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const steps = document.querySelectorAll('.progress-steps .step');
+        const progressFill = document.querySelector('.progress-fill');
+        let completedCount = 0;
+
+        steps.forEach(step => {
+            if (step.classList.contains('completed')) {
+                completedCount += 1;
+            }
+        });
+
+        const fillPercentage = (completedCount / steps.length) * 100;
+        progressFill.style.height = fillPercentage + '%';
+    });
+</script>
+{% endblock %}

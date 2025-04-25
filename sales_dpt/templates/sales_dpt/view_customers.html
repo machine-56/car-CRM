@@ -1,0 +1,39 @@
+{% extends 'sales_dpt/salesBase.html' %}
+{% load static %}
+
+{% block title %}Customer Data Summary{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'sales_dpt/css/customer_summary.css' %}">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Customer Data Summary</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Interested Car</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phone }}</td>
+                <td>{{ customer.interested_car }}</td>
+                <td>{{ customer.location }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'upload_customers' %}" class="btn btn-cstm">Add New Customer</a>
+    </div>
+</div>
+{% endblock %}

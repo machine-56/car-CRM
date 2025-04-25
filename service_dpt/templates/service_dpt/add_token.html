@@ -10,33 +10,63 @@
     <h2 class="mb-4 text-center">Generate Service Token</h2>
     <form method="post" class="p-4 shadow-sm rounded form_div">
         {% csrf_token %}
+        <!-- Customer Info -->
         <div class="mb-3">
             <label for="customerName" class="form-label">Customer Name</label>
             <input type="text" class="form-control" id="customerName" name="customerName" required>
         </div>
         <div class="mb-3">
-            <label for="vehicleNumber" class="form-label">Vehicle Number</label>
-            <input type="text" class="form-control" id="vehicleNumber" name="vehicleNumber" required>
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
         </div>
         <div class="mb-3">
-            <label for="serviceType" class="form-label">Service Type</label>
-            <select class="form-select" id="serviceType" name="serviceType" required>
-                <option value="">Choose...</option>
-                <option value="Paint">Paint</option>
-                <option value="Body Repairs">Body Repairs</option>
-                <option value="Accident Repairs">Accident Repairs</option>
-                <option value="Electrical">Electrical</option>
-                <option value="Insurance">Insurance</option>
-            </select>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
-        <button type="submit" class="btn btn-dark w-100">Generate Token</button>
+
+        <div class="mb-3">
+            <label for="vehicle" class="form-label">Vehicle Number</label>
+            <input type="text" class="form-control" id="vehicle" name="vehicle" required>
+        </div>
+        
+
+        <!-- General Work -->
+        <div class="mb-4">
+            <h5>General Work</h5>
+            <textarea class="form-control mb-2" name="general_work" rows="2" placeholder="Enter work details"></textarea>
+            <input type="number" class="form-control" name="general_price" placeholder="Estimated Price">
+        </div>
+
+        <!-- Paint Department -->
+        <div class="mb-4">
+            <h5>Paint Department</h5>
+            <textarea class="form-control mb-2" name="paint_work" rows="2" placeholder="Enter work details"></textarea>
+            <input type="number" class="form-control" name="paint_price" placeholder="Estimated Price">
+        </div>
+
+        <!-- Body Repairs -->
+        <div class="mb-4">
+            <h5>Body Repairs</h5>
+            <textarea class="form-control mb-2" name="body_work" rows="2" placeholder="Enter work details"></textarea>
+            <input type="number" class="form-control" name="body_price" placeholder="Estimated Price">
+        </div>
+
+        <!-- Accident Repairs -->
+        <div class="mb-4">
+            <h5>Accident Repairs</h5>
+            <textarea class="form-control mb-2" name="accident_work" rows="2" placeholder="Enter work details"></textarea>
+            <input type="number" class="form-control" name="accident_price" placeholder="Estimated Price">
+        </div>
+
+        <!-- Electrical -->
+        <div class="mb-4">
+            <h5>Electrical</h5>
+            <textarea class="form-control mb-2" name="electrical_work" rows="2" placeholder="Enter work details"></textarea>
+            <input type="number" class="form-control" name="electrical_price" placeholder="Estimated Price">
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-cstm w-100">Generate Token</button>
     </form>
-
-    {% if token %}
-    <div class="alert alert-success mt-4 text-center" role="alert">
-        <strong>Token Generated:</strong> {{ token }}
-    </div>
-    {% endif %}
 </div>
-
 {% endblock %}

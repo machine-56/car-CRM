@@ -61,6 +61,11 @@
             </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white {% if request.path == '/sales/customers/' %}activein{% endif %}" href="{% url 'view_customer' %}">
+              <i class="fas fa-users me-2"></i>Customer
+          </a>
+        </li>      
+        <li class="nav-item">
           <a class="nav-link text-white {% if request.path == '/sales/orders/' %}activein{% endif %}" href="{% url 'order_list' %}">
             <i class="fas fa-list me-2"></i>Order List
           </a>

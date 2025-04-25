@@ -1,0 +1,24 @@
+{% extends 'service_dpt/serviceBase.html' %}
+{% load static %}
+
+{% block title %}Service Staff Performance{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'service_dpt/css/staff.css' %}">
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Service Staff Performance</h2>
+    <div class="row g-4">
+        {% for staff in staff_list %}
+        <div class="col-lg-4 col-md-6">
+            <div class="card staff-card text-center p-3">
+                <img src="{% static staff.image %}" alt="{{ staff.name }}" class="rounded-circle mx-auto mb-3" style="width:100px; height:100px; object-fit:cover;">
+                <h5>{{ staff.name }}</h5>
+                <p class="text-muted">{{ staff.role }}</p>
+                <a href="{% url 'staff_profile' staff.id %}" class="btn btn-cstm mt-2">View Profile</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

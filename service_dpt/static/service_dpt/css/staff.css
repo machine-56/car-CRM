@@ -1,0 +1,48 @@
+
+.staff-card, .staff-profile-card {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid var(--metallic-silver);
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+
+/* .staff-card:hover {
+    transform: translateY(-5px);
+} */
+
+.staff-card h5, .staff-profile-card h4 {
+    color: var(--dark-violet);
+    font-weight: 600;
+}
+
+.staff-card p, .staff-profile-card p {
+    color: var(--dark-violet);
+    margin: 5px 0;
+}
+
+.btn-cstm {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cstm:hover {
+    background-color: var(--accent-red);
+}
+
+.btn-temp {
+    background-color: var(--metallic-grey);
+    color: var(--dark-violet);
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-temp:hover {
+    background-color: var(--metallic-silver);
+}
