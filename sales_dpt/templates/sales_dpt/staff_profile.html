@@ -9,7 +9,7 @@
 <div class="container mt-5">
   <div class="row mb-4 align-items-center">
     <div class="col-md-2 text-center">
-      <img src="{% static 'images/default_profile.png' %}" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px;">
+      <img src="{% static user.profile_image %}" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
     </div>
     <div class="col-md-10">
       <h3>{{ user.first_name }} {{ user.last_name }}{% if not user.first_name %}John Doe{% endif %}</h3>

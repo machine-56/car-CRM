@@ -31,6 +31,7 @@ def staff_profile(request, id):
             'attendance': {'status': 'Present', 'worked_days': 220, 'leaves': 10},
             'business': {'leads': 150, 'deals': 45, 'active': 12},
             'performance': [12, 19, 10, 14, 17],
+            'profile_image' : 'images/profile_images/image-1.png'
         },
         2: {
             'first_name': 'Jane',
@@ -39,6 +40,7 @@ def staff_profile(request, id):
             'attendance': {'status': 'Absent', 'worked_days': 190, 'leaves': 20},
             'business': {'leads': 120, 'deals': 30, 'active': 8},
             'performance': [8, 14, 11, 10, 12],
+            'profile_image' : 'images/profile_images/image-2.png'
         },
         3: {
             'first_name': 'Alex',
@@ -47,6 +49,7 @@ def staff_profile(request, id):
             'attendance': {'status': 'Present', 'worked_days': 230, 'leaves': 5},
             'business': {'leads': 200, 'deals': 70, 'active': 20},
             'performance': [15, 22, 18, 20, 25],
+            'profile_image' : 'images/profile_images/image-3.png'
         }
     }
 
