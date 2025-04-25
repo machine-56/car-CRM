@@ -5,12 +5,32 @@
     border-radius: 8px;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.customer-name h4 {
+    color: var(--dark-violet);
+}
+
+.vehicle-info p {
+    margin: 0;
+    color: var(--dark-violet);
+}
+
+.progress-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .progress-bar-vertical {
     position: relative;
     width: 4px;
     height: 300px;
     background-color: var(--metallic-grey);
-    margin: 0 auto;
 }
 
 .progress-fill {
@@ -35,4 +55,26 @@
 .progress-steps .step p {
     color: var(--dark-violet);
     margin: 0;
+}
+
+@media (max-width: 576px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .vehicle-info {
+        margin-top: 10px;
+    }
+    .progress-wrapper {
+        justify-content: flex-end;
+    }
+    .progress-bar-vertical {
+        height: 250px;
+    }
+    .progress-steps {
+        left: 30px;
+    }
+    .progress-steps .step p {
+        font-size: 14px;
+    }
 }
