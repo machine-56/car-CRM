@@ -5,6 +5,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'service_dpt/css/staff.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="container mt-5">
     <div class="card p-4 shadow-sm staff-profile-card">
@@ -17,7 +18,42 @@
         <p><strong>Experience:</strong> {{ staff.experience }}</p>
         <p><strong>Tasks Completed:</strong> {{ staff.tasks_completed }}</p>
         <p><strong>Rating:</strong> ⭐ {{ staff.rating }}</p>
+        <hr>
+        <h5 class="text-center">Performance Overview</h5>
+        <canvas id="performanceChart"></canvas>
         <a href="{% url 'staff_performance' %}" class="btn btn-temp mt-3">Back to Staff List</a>
     </div>
 </div>
+
+<script>
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Tasks Completed',
+                data: {{ staff.performance }},
+                backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                borderColor: '#ff0000',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}
