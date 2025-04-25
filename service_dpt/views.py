@@ -104,10 +104,10 @@ staff_list = [
 ]
 
 def staff_performance(request):
-    return render(request, 'service_dpt/staffs.html', {'staff_list': staff_list})
+    return render(request, 'service_dpt/service_staffs.html', {'staff_list': staff_list})
 
 def staff_profile(request, staff_id):
     staff = next((s for s in staff_list if s['id'] == staff_id), None)
     if not staff:
         return redirect('staff_performance')
-    return render(request, 'service_dpt/staff_profile.html', {'staff': staff})
+    return render(request, 'service_dpt/service_staff_profile.html', {'staff': staff})
