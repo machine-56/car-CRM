@@ -17,11 +17,16 @@
         <hr>
         <p><strong>Experience:</strong> {{ staff.experience }}</p>
         <p><strong>Tasks Completed:</strong> {{ staff.tasks_completed }}</p>
+        <p><strong>Attendance:</strong> {{ staff.attendance }}</p>
         <p><strong>Rating:</strong> ⭐ {{ staff.rating }}</p>
         <hr>
         <h5 class="text-center">Performance Overview</h5>
         <canvas id="performanceChart"></canvas>
-        <a href="{% url 'staff_performance' %}" class="btn btn-temp mt-3">Back to Staff List</a>
+        <hr>
+        <h5 class="text-center mt-4">Business Details</h5>
+        <p><strong>Revenue Handled:</strong> ${{ staff.business.revenue_handled }}</p>
+        <p><strong>Service Categories:</strong> {{ staff.business.categories|join:', ' }}</p>
+        <a href="{% url 'staff_performance' %}" class="btn btn-dark mt-3">Back to Staff List</a>
     </div>
 </div>
 
@@ -44,14 +49,10 @@
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    display: false
-                }
+                legend: { display: false }
             },
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                y: { beginAtZero: true }
             }
         }
     });

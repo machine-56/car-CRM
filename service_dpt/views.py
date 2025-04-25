@@ -81,6 +81,11 @@ staff_list = [
         'experience': '5 Years',
         'tasks_completed': 120,
         'rating': 4.5,
+        'attendance': '96%',
+        'business': {
+            'revenue_handled': 45000,
+            'categories': ['Paint Jobs', 'Custom Finishes']
+        },
         'image': 'images/profile_images/image-1.png',
         'performance': [10, 12, 9, 15, 14, 13]
     },
@@ -91,6 +96,11 @@ staff_list = [
         'experience': '3 Years',
         'tasks_completed': 95,
         'rating': 4.2,
+        'attendance': '92%',
+        'business': {
+            'revenue_handled': 38000,
+            'categories': ['Body Repairs', 'Dent Removal']
+        },
         'image': 'images/profile_images/image-2.png',
         'performance': [8, 9, 11, 10, 12, 9]
     },
@@ -101,6 +111,11 @@ staff_list = [
         'experience': '4 Years',
         'tasks_completed': 110,
         'rating': 4.7,
+        'attendance': '98%',
+        'business': {
+            'revenue_handled': 50000,
+            'categories': ['Electrical Systems', 'Battery Maintenance']
+        },
         'image': 'images/profile_images/image-3.png',
         'performance': [12, 14, 13, 15, 16, 14]
     }
