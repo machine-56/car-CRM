@@ -22,6 +22,7 @@
     border-radius: 5px;
     box-shadow: var(--shadow-medium);
     width: 30%;
+    min-width: fit-content;
     cursor: pointer;
     transition: transform 0.1s ease;
 }
