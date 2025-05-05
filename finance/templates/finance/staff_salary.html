@@ -1,0 +1,53 @@
+{% extends 'finance/financeBase.html' %}
+{% load static %}
+
+{% block title %}Staff Salary{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'finance/css/staff_salary.css' %}">
+
+<div class="container">
+  <h2 class="mb-4">Staff Salary & Attendance</h2>
+
+  <form method="get" action="{% url 'staff_attendance' %}">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="department" class="form-label">Department</label>
+        <select id="department" name="department" class="form-select">
+          <option value="">Select Department</option>
+          <option value="Sales">Sales</option>
+          <option value="Service">Service</option>
+        </select>
+      </div>
+
+      <div class="col-12 mb-3">
+        <label for="staff_name" class="form-label">Staff</label>
+        <select id="staff_name" name="staff_name" class="form-select">
+          <option value="">Select Staff</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 col-sm-12 mb-3">
+        <label for="start_date" class="form-label">Start Date</label>
+        <input type="date" id="start_date" name="start_date" class="form-control">
+      </div>
+
+      <div class="col-md-6 col-sm-12 mb-3">
+        <label for="end_date" class="form-label">End Date</label>
+        <input type="date" id="end_date" name="end_date" class="form-control">
+      </div>
+
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-cstm">Show Attendance</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  window.salesStaff = {{ sales_staff_json|safe }};
+  window.serviceStaff = {{ service_staff_json|safe }};
+</script>
+<script src="{% static 'finance/js/staff_salary.js' %}"></script>
+
+{% endblock %}

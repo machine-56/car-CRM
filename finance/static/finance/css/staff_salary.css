@@ -1,0 +1,26 @@
+.container h2 {
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: var(--dark-violet);
+    color: var(--off-white);
+  }
+  
+  .table td {
+    background-color: var(--off-white);
+  }
+  
+  select, input[type="date"] {
+    border-radius: 8px;
+  }
+  
+  button.btn-cstm {
+    width: 100%;
+  }
+  

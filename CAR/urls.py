@@ -12,4 +12,5 @@ urlpatterns = [
     path('sales/', include('sales_dpt.urls')),
     path('telecaller/', include('telecaller_dpt.urls')),
     path('service/', include('service_dpt.urls')),
+    path('finance/', include('finance.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

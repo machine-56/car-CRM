@@ -1,0 +1,49 @@
+
+
+@media print {
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .main_div_user {
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    button,
+    .btn,
+    .no-print {
+        display: none !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    nav.navbar {
+        position: static !important;
+    }
+
+    .footer_main {
+        position: static !important;
+    }
+
+    table {
+        page-break-inside: auto;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+}
+

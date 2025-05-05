@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'sales_dpt',
     'telecaller_dpt',
     'service_dpt',
+    'finance',
 ]
 
 MIDDLEWARE = [
