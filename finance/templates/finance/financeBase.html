@@ -77,12 +77,12 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/service/history/' %}activein{% endif %}" href="{% url 'service_history' %}">
+          <a class="nav-link text-white {% if request.path == '/finance/service/history/' %}activein{% endif %}" href="{% url 'service_history' %}">
               <i class="fas fa-list me-2"></i>Service History
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/accounts/set-timer/' %}activein{% endif %}" href="{% url 'set_countdown' %}">
+          <a class="nav-link text-white {% if request.path == '/finance/service/set_countdown/' %}activein{% endif %}" href="{% url 'set_countdown' %}">
             <i class="fas fa-clock me-2"></i>Set Service Timer
           </a>
         </li>

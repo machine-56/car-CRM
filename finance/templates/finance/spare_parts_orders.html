@@ -1,9 +1,8 @@
 {% extends 'finance/financeBase.html' %}
 {% load static %}
-
 {% block title %}Spare Parts Orders{% endblock %}
-
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'finance/css/spare_parts.css' %}">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -39,33 +38,36 @@
         <canvas id="ordersChart"></canvas>
     </div>   
 
-    <div class="mb-3">
-        <button class="btn btn-primary me-2" id="btnPrint" data-table="ordersTable">Print as PDF</button>
-        <button class="btn btn-success" id="btnExcel" data-table="ordersTable">Export as Excel</button>
+    <div class="mb-3 btn_div">
+        <button class="btn btn-cstm me-2" id="btnPrint" data-table="ordersTable">Print as PDF</button>
+        <button class="btn btn-success btn_w" id="btnExcel" data-table="ordersTable">Export as Excel</button>
     </div>
 
-    <table id="ordersTable" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Part</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Expense</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for o in orders %}
-            <tr>
-                <td>{{ o.date }}</td>
-                <td>{{ o.part }}</td>
-                <td>{{ o.category }}</td>
-                <td>{{ o.quantity }}</td>
-                <td>{{ o.expense }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table id="ordersTable" class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Part</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Expense</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in orders %}
+                <tr>
+                    <td>{{ o.date }}</td>
+                    <td>{{ o.part }}</td>
+                    <td>{{ o.category }}</td>
+                    <td>{{ o.quantity }}</td>
+                    <td>{{ o.expense }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 <script src="{% static 'finance/js/orders_page.js' %}"></script>

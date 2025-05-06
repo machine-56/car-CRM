@@ -1,0 +1,13 @@
+
+
+.input_query{
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .input_query{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

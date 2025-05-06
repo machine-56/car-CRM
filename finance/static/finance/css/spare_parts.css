@@ -12,6 +12,21 @@ canvas {
     margin: 0 auto;
 }
 
+.btn_div{
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .btn_div{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn_div .btn{
+        width: 100%;
+    }
+}
+
 @media print {
   html, body {
       height: auto !important;

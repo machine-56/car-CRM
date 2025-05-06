@@ -1,4 +1,37 @@
 
+.head_main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#attendanceSummary{
+    display: flex;
+}
+@media (max-width: 768px) {
+    .head_main{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-div{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+    .btn{
+        width: 100%;
+    }
+    #attendanceSummary{
+        display: flex;
+        flex-direction: column;
+    }
+    .mob_hid{
+        display: none;
+    }
+}
 
 @media print {
     html, body {

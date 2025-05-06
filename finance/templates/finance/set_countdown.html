@@ -1,32 +1,37 @@
 {% extends 'finance/financeBase.html' %}
 {% load static %}
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'finance/css/set_countdown.css' %}">
 
 <div class="container mt-5">
-    <h2>Set Service Countdown</h2>
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label>Vehicle Number</label>
-            <input type="text" name="vehicle_number" class="form-control" required>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label>Days</label>
-                <input type="number" name="days" class="form-control" value="0" min="0">
+    <div class="form_main">
+        <h2>Set Service Countdown</h2>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label>Vehicle Number</label>
+                <input type="text" name="vehicle_number" class="form-control" required>
             </div>
-            <div class="col">
-                <label>Hours</label>
-                <input type="number" name="hours" class="form-control" value="0" min="0" max="23">
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Days</label>
+                    <input type="number" name="days" class="form-control" value="0" min="0">
+                </div>
+                <div class="col">
+                    <label>Hours</label>
+                    <input type="number" name="hours" class="form-control" value="0" min="0" max="23">
+                </div>
+                <div class="col">
+                    <label>Minutes</label>
+                    <input type="number" name="minutes" class="form-control" value="0" min="0" max="59">
+                </div>
             </div>
-            <div class="col">
-                <label>Minutes</label>
-                <input type="number" name="minutes" class="form-control" value="0" min="0" max="59">
+            <div class="text-center">
+                <button type="submit" class="btn btn-cstm">Set Countdown</button>
             </div>
-        </div>
-        <button type="submit" class="btn btn-success">Set Countdown</button>
-    </form>
+        </form>
+    </div>
 
     <h4 class="mt-5">Active Countdowns</h4>
     {% if countdowns %}

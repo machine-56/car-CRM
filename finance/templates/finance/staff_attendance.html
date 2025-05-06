@@ -5,11 +5,11 @@
 <link rel="stylesheet" href="{% static 'finance/css/staff_attendance.css' %}">
 
 <div class="container testing">
-  <div class="d-flex justify-content-between align-items-center mb-3 no-print">
+  <div class="head_main no-print">
     <h2>Attendance Records</h2>
-    <div>
-      <button class="btn btn-primary me-2" id="btnPrint" data-table="attendanceTable">Print as PDF</button>
-      <button class="btn btn-success me-2" id="btnExcel" data-table="attendanceTable">Export as Excel</button>
+    <div class="btn-div">
+      <button class="btn btn-cstm me-2" id="btnPrint" data-table="attendanceTable">Print as PDF</button>
+      <button class="btn btn-success btn_w me-2" id="btnExcel" data-table="attendanceTable">Export as Excel</button>
     </div>
   </div>
 
@@ -20,9 +20,9 @@
   </div>
 
   <div id="attendanceSummary" class="my-3">
-    <strong>Total Days:</strong> {{ total_days }} |
-    <strong>Present:</strong> {{ present_days }} |
-    <strong>Absent:</strong> {{ absent_days }}
+    <div><strong>Total Days:</strong> {{ total_days }} <span class="mob_hid me-2" >|</span></div>
+    <div><strong>Present:</strong> {{ present_days }} <span class="mob_hid me-2" >|</span></div>
+    <div><strong>Absent:</strong> {{ absent_days }}</div>
   </div>
 
   

@@ -12,7 +12,7 @@
     <p><strong>Bill Number:</strong> {{ token }}</p>
     <p><strong>Status:</strong> {{ status }}</p>
 
-    <button class="btn btn-primary no-print mt-3" onclick="window.print()">Print Token</button>
-    <a href="{% url 'print_bill' token %}" class="no-print btn btn-secondary mt-3">View Full Bill</a>
+    <button class="btn btn-cstm no-print mt-3" onclick="window.print()">Print Token</button>
+    <a href="{% url 'print_bill' token %}" class="no-print btn btn-secondary btn_w mt-3">View Full Bill</a>
 </div>
 {% endblock %}

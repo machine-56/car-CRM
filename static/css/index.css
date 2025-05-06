@@ -49,7 +49,7 @@ body{
     box-shadow: var(--shadow-light);
 }
 
-btn_w{
+.btn_w{
     padding: 0.6rem 2rem;
 }
 

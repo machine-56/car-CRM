@@ -1,43 +1,49 @@
 {% extends 'finance/financeBase.html' %}
+{% load static %}
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'finance/css/service_history.css' %}">
+
 <div class="container">
     <h2>Service History</h2>
-    <form method="get" class="d-flex mb-3">
-        <input type="text" name="vehicle_number" placeholder="Enter vehicle number" class="form-control me-2" value="{{ vehicle_number|default:'' }}">
-        <button type="submit" class="btn btn-primary">Search</button>
+    <form method="get" class="input_query mb-3">
+        <input type="text" name="vehicle_number" placeholder="Enter vehicle number" class="form-control me-2">
+        <button type="submit" class="btn btn-cstm">Search</button>
     </form>
 
     <div class="mt-4">
         {% if results %}
         <p class="my-3"><b>Vehicle Number:</b> {{ vehicle_number }}</p>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Token</th>
-                    <th>Date</th>
-                    <th>Summary</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for r in results %}
-                <tr>
-                    <td><a href="{% url 'service_detail' r.token %}">{{ r.token }}</a></td>
-                    <td>{{ r.date }}</td>
-                    <td>{{ r.summary }}</td>
-                    <td>{{ r.status }}</td>
-                    <td>
-                        {% if r.is_paid %}
-                            <a href="{% url 'print_bill' r.token %}" class="btn btn-success btn-sm">View Bill</a>
-                        {% else %}
-                            <a href="{% url 'service_payment' r.token %}" class="btn btn-warning btn-sm">Proceed to Payment</a>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Date</th>
+                        <th>Summary</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results %}
+                    <tr>
+                        <td><a href="{% url 'service_detail' r.token %}" style="text-decoration: none; color: black; cursor: pointer;">{{ r.token }}</a></td>
+                        <td>{{ r.date }}</td>
+                        <td>{{ r.summary }}</td>
+                        <td>{{ r.status }}</td>
+                        <td>
+                            {% if r.is_paid %}
+                                <a href="{% url 'print_bill' r.token %}" class="btn btn-success btn-sm">View Bill</a>
+                            {% else %}
+                                <a href="{% url 'service_payment' r.token %}" class="btn btn-warning btn-sm">Proceed to Payment</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         {% else %}
         <p class="text-muted">No records found.</p>
         {% endif %}

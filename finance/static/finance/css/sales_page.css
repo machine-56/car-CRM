@@ -1,4 +1,21 @@
 
+.btn-div{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .btn-div{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+    .btn{
+        width: 100%;
+    }
+}
 
 @media print {
     html, body {
@@ -30,7 +47,7 @@
     }
 
     canvas {
-        max-width: 100% !important;
+        width: 100% !important;
         height: auto !important;
         page-break-inside: avoid;
         display: block;

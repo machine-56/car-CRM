@@ -19,7 +19,7 @@
   <h2 class="mb-4 text-center">Spare Parts Stock</h2>
 
   <div class="d-flex justify-content-end mb-3">
-    <button class="btn btn-primary me-2" id="btnPrint" data-table="stockTable">Print as PDF</button>
+    <button class="btn btn-cstm me-2" id="btnPrint" data-table="stockTable">Print as PDF</button>
     <button class="btn btn-success" id="btnExcel" data-table="stockTable">Export as Excel</button>
   </div>
 
@@ -39,7 +39,7 @@
           <td>{{ part.name }}</td>
           <td>{{ part.category }}</td>
           <td class="stock-cell" data-qty="{{ part.stock }}">{{ part.stock }}</td>
-          <td><button class="btn btn-primary btn-order" data-part="{{ part.name }}">Order</button></td>
+          <td><button class="btn btn-cstm btn-order" data-part="{{ part.name }}">Order</button></td>
         </tr>
         {% endfor %}
       </tbody>
@@ -66,7 +66,7 @@
         <input type="number" id="orderQuantity" class="form-control" placeholder="Enter quantity" min="1">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="confirmOrder">Confirm Order</button>
+        <button type="button" class="btn btn-cstm" id="confirmOrder">Confirm Order</button>
       </div>
     </div>
   </div>

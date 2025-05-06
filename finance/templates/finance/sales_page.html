@@ -23,29 +23,31 @@
 
     <canvas id="salesChart" class="mb-4"></canvas>
 
-    <div class="mb-3">
-        <button class="btn btn-primary me-2" id="btnPrint" data-table="salesTable">Print as PDF</button>
+    <div class="btn-div">
+        <button class="btn btn-cstm me-2" id="btnPrint" data-table="salesTable">Print as PDF</button>
         <button class="btn btn-success" id="btnExcel" data-table="salesTable">Export as Excel</button>
     </div>
 
-    <table id="salesTable" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Car Sales</th>
-                <th>Spare Parts Sales</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in sales_data %}
-            <tr>
-                <td>{{ row.date }}</td>
-                <td>{{ row.car_sales }}</td>
-                <td>{{ row.spare_sales }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table id="salesTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Car Sales</th>
+                    <th>Spare Parts Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in sales_data %}
+                <tr>
+                    <td>{{ row.date }}</td>
+                    <td>{{ row.car_sales }}</td>
+                    <td>{{ row.spare_sales }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="{% static 'finance/js/sales_page.js' %}"></script>
