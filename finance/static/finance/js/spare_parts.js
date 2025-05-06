@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const messageContainer = document.getElementById('messageContainer');
     let selectedPart = '';
 
-    // Highlight low stock
     document.querySelectorAll('.stock-cell').forEach(cell => {
         const qty = parseInt(cell.dataset.qty);
         if (qty < 5) {
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Filter rows
     filter.addEventListener('change', () => {
         const category = filter.value;
         rows.forEach(row => {
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Handle order button click
     orderButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             selectedPart = btn.dataset.part;
@@ -39,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Confirm order and show success message
     confirmOrder.addEventListener('click', () => {
         const qty = orderQuantity.value;
         if (qty && qty > 0) {
@@ -51,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Initialize Chart.js graph
     const ctx = document.getElementById('sparePartsChart').getContext('2d');
     new Chart(ctx, {
         type: 'bar',

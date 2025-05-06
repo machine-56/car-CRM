@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (status === 'absent') absentDays++;
     });
 
-    // Prepare the custom header for Excel export
     window.customExcelHeader = [
         ["Name: " + name],
         ["Department: " + department],

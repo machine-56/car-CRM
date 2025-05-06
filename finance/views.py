@@ -6,6 +6,8 @@ from user.models import ServiceCountdown
 import json
 import random
 
+# Create your views here.
+
 def finance_home(request):
     return render(request, 'finance/finance_home.html')
 
@@ -50,7 +52,7 @@ def vehicle_sales_page(request):
     for i in range(30):
         d = today - timedelta(days=i)
         units_sold = random.randint(1, 10)
-        revenue = units_sold * 500000  # example ₹5 lakh per vehicle
+        revenue = units_sold * 500000
         data.append({
             'date': d.strftime('%Y-%m-%d'),
             'units_sold': units_sold,

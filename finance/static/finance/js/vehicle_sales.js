@@ -2,11 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const table = document.getElementById("vehicleSalesTable");
     const chartCanvas = document.getElementById("vehicleSalesChart");
 
-    // Provide custom Excel header
     window.customExcelHeader = [
         ["Vehicle Sales Report"],
         ["Generated on:", new Date().toLocaleDateString()],
-        [] // blank row for spacing
+        []
     ];
 
     const labels = [];

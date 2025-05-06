@@ -54,7 +54,6 @@
         display: block !important;
     }
 
-    /* PDF mode: override regular print */
     html.print-pdf .navbar,
     html.print-pdf .footer_main {
         display: block !important;

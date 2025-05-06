@@ -50,7 +50,7 @@ def order_list(request):
     return render(request, 'sales_dpt/order_list.html')
 
 def stocks(request):
-    # Fake database data (to replace later with real DB)
+    #TODO: Fake database data (to replace later with real DB)
     parts_data = [
         {'name': 'Brake Pads', 'category': 'Braking System', 'quantity': 5},
         {'name': 'Air Filter', 'category': 'Engine', 'quantity': 18},
