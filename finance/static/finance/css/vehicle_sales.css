@@ -38,7 +38,6 @@
     .print-section {
         display: block !important;
     }
-    /* Collapse the graph in normal print */
     .graph-section {
         display: none !important;
     }
@@ -50,7 +49,7 @@
         max-width: 100% !important;
         overflow-x: visible !important;
     }
-    /* PDF mode overrides */
+
     html.print-pdf .navbar,
     html.print-pdf .footer_main {
         display: block !important;
