@@ -1,0 +1,24 @@
+{% extends 'finance/financeBase.html' %}
+{% block content %}
+<div class="container">
+    <h2>Token #{{ service.token }}</h2>
+    <p>Customer: {{ service.customer }}</p>
+    <p>Vehicle: {{ service.vehicle }}</p>
+    <p>Date: {{ service.date }}</p>
+    <p>Email: {{ service.email }}</p>
+    <p>Phone: {{ service.phone }}</p>
+    <hr>
+    <h4>Invoice</h4>
+    <table class="table">
+        <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+        <tbody>
+            {% for item in service.items %}
+            <tr><td>{{ item.desc }}</td><td>{{ item.amount }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h5>Total: ₹{{ service.total }}</h5>
+    <a href="{% url 'service_payment' service.token %}" class="btn btn-success">Proceed to Pay</a>
+    <a href="{% url 'service_history' %}" class="btn btn-secondary">Back</a>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'finance/financeBase.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'finance/css/print_styles.css' %}">
+
+<div class="container bill-container">
+    <h2 class="text-center mb-4">Aurelius Motors — Invoice</h2>
+    <p><strong>Vehicle:</strong> {{ service.vehicle }}</p>
+    <p><strong>Customer:</strong> {{ service.customer }}</p>
+    <p><strong>Email:</strong> {{ service.email }}</p>
+    <p><strong>Phone:</strong> {{ service.phone }}</p>
+    <hr>
+    <table class="table table-bordered">
+        <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+        <tbody>
+            {% for item in service.items %}
+            <tr><td>{{ item.desc }}</td><td>₹{{ item.amount }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4 class="text-end mt-3"><strong>Total:</strong> ₹{{ service.total }}</h4>
+    <button class="btn btn-primary no-print" onclick="window.print()">Print Bill</button>
+</div>
+{% endblock %}

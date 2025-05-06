@@ -16,3 +16,10 @@ class TestDrive(models.Model):
     date = models.DateField()
     time = models.TimeField()
     booked_at = models.DateTimeField(auto_now_add=True)
+
+class ServiceCountdown(models.Model):
+    vehicle_number = models.CharField(max_length=20, unique=True)
+    end_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+

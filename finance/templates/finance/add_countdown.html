@@ -1,0 +1,12 @@
+{% extends 'finance/financeBase.html' %}
+{% block content %}
+<div class="container">
+    <h2>Add Service Countdown</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="vehicle_number" class="form-control mb-2" placeholder="Vehicle Number" required>
+        <input type="datetime-local" name="ready_time" class="form-control mb-2" required>
+        <button type="submit" class="btn btn-primary">Set Countdown</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'finance/financeBase.html' %}
+{% load static %}
+
+{% block title %}Spare Parts Orders{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'finance/css/spare_parts.css' %}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container">
+    <h2>Spare Parts Orders</h2>
+
+    <form class="row mb-3" method="get">
+        <div class="col-md-3 col-sm-6 mb-2">
+            <label>Start Date</label>
+            <input type="date" name="start_date" class="form-control" value="{{ start_date }}">
+        </div>
+        <div class="col-md-3 col-sm-6 mb-2">
+            <label>End Date</label>
+            <input type="date" name="end_date" class="form-control" value="{{ end_date }}">
+        </div>
+        <div class="col-md-3 col-sm-6 mb-2">
+            <label>Category</label>
+            <select name="category" class="form-select">
+                <option value="all">All</option>
+                <option value="Braking System" {% if selected_category == 'Braking System' %}selected{% endif %}>Braking System</option>
+                <option value="Engine" {% if selected_category == 'Engine' %}selected{% endif %}>Engine</option>
+                <option value="Electrical" {% if selected_category == 'Electrical' %}selected{% endif %}>Electrical</option>
+            </select>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-cstm w-100">Filter</button>
+        </div>
+    </form>
+
+    
+    <div class="chart-container">
+        <canvas id="ordersChart"></canvas>
+    </div>   
+
+    <div class="mb-3">
+        <button class="btn btn-primary me-2" id="btnPrint" data-table="ordersTable">Print as PDF</button>
+        <button class="btn btn-success" id="btnExcel" data-table="ordersTable">Export as Excel</button>
+    </div>
+
+    <table id="ordersTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Part</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Expense</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in orders %}
+            <tr>
+                <td>{{ o.date }}</td>
+                <td>{{ o.part }}</td>
+                <td>{{ o.category }}</td>
+                <td>{{ o.quantity }}</td>
+                <td>{{ o.expense }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="{% static 'finance/js/orders_page.js' %}"></script>
+<script src="{% static 'finance/js/export.js' %}"></script>
+{% endblock %}

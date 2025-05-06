@@ -1,0 +1,17 @@
+{% extends 'finance/financeBase.html' %}
+{% block content %}
+<div class="container">
+    <h2>Payment for Token #{{ token }}</h2>
+    <p>Customer: John Doe</p>
+    <p>Total Amount: ₹3000</p>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <input type="radio" name="payment_mode" value="Cash" required> Cash
+            <input type="radio" name="payment_mode" value="Card"> Card
+            <input type="radio" name="payment_mode" value="UPI"> UPI
+        </div>
+        <button type="submit" class="btn btn-primary">Complete Payment</button>
+    </form>
+</div>
+{% endblock %}

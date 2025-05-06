@@ -1,0 +1,23 @@
+{% extends 'finance/financeBase.html' %}
+{% block content %}
+<div class="container">
+    <h2>Vehicle Countdown</h2>
+    <table class="table">
+        <thead>
+            <tr><th>Vehicle</th><th>Remaining Time</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+            {% for c in countdowns %}
+            <tr>
+                <td>{{ c.vehicle }}</td>
+                <td>{{ c.remaining }}</td>
+                <td>{{ c.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    setInterval(() => location.reload(), 1000);
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'finance/financeBase.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'finance/css/set_countdown.css' %}">
+
+<div class="container mt-5">
+    <h2>Set Service Countdown</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Vehicle Number</label>
+            <input type="text" name="vehicle_number" class="form-control" required>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label>Days</label>
+                <input type="number" name="days" class="form-control" value="0" min="0">
+            </div>
+            <div class="col">
+                <label>Hours</label>
+                <input type="number" name="hours" class="form-control" value="0" min="0" max="23">
+            </div>
+            <div class="col">
+                <label>Minutes</label>
+                <input type="number" name="minutes" class="form-control" value="0" min="0" max="59">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Set Countdown</button>
+    </form>
+
+    <h4 class="mt-5">Active Countdowns</h4>
+    {% if countdowns %}
+    <ul class="list-group">
+        {% for c in countdowns %}
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Vehicle: {{ c.vehicle_number }}</span>
+            <span>Remaining: {{ c.time_str }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="mt-3 text-muted">No vehicles pending.</p>
+    {% endif %}
+</div>
+{% endblock %}

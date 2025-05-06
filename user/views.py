@@ -4,13 +4,14 @@ from django.contrib.auth.decorators import login_required
 from admin_panel.models import Car
 from admin_panel.models import Car
 from collections import OrderedDict
-from .models import OrderedCar, TestDrive
+from .models import OrderedCar, TestDrive, ServiceCountdown
 
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import timedelta
+from django.utils.timezone import now
 
 # Create your views here.
 @login_required(login_url = 'index')
@@ -187,3 +188,26 @@ def status_view(request):
 def profile_view(request):
     user = request.user
     return render(request, 'user/profile.html', {'user_data': user})
+
+@login_required(login_url = 'index')
+def view_vehicle_countdown(request):
+    countdowns = []
+    for item in ServiceCountdown.objects.all():
+        remaining = item.end_time - now()
+        total_seconds = int(remaining.total_seconds())
+        if total_seconds < 0:
+            status = 'Service completed. Our staff will contact you shortly.'
+            time_str = '00:00:00:00'
+        else:
+            days = total_seconds // (24 * 3600)
+            hours = (total_seconds % (24 * 3600)) // 3600
+            minutes = (total_seconds % 3600) // 60
+            seconds = total_seconds % 60
+            time_str = f"{days:02d}:{hours:02d}:{minutes:02d}:{seconds:02d}"
+            status = ''
+        countdowns.append({
+            'vehicle_number': item.vehicle_number,
+            'time_str': time_str,
+            'status': status
+        })
+    return render(request, 'user/view_countdown.html', {'countdowns': countdowns})

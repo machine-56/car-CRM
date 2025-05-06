@@ -1,0 +1,36 @@
+
+
+@media print {
+    .no-print,
+    .navbar-toggler,
+    footer,
+    .sidebar {
+        display: none !important;
+    }
+    body {
+        margin: 0;
+        font-size: 12pt;
+    }
+    .bill-container {
+        width: 100%;
+        padding: 20px;
+    }
+    .bill-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .bill-container table, 
+    .bill-container th, 
+    .bill-container td {
+        border: 1px solid #000;
+    }
+    .bill-container th, 
+    .bill-container td {
+        padding: 8px;
+        text-align: left;
+    }
+    .bill-container h2, 
+    .bill-container h4 {
+        text-align: center;
+    }
+}

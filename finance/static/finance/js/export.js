@@ -2,13 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const printBtn = document.getElementById('btnPrint');
     const excelBtn = document.getElementById('btnExcel');
 
-    const tableId = (printBtn && printBtn.dataset.table) || 
-                    (excelBtn && excelBtn.dataset.table) || 
+    const tableId = (printBtn && printBtn.dataset.table) ||
+                    (excelBtn && excelBtn.dataset.table) ||
                     'exportTable';
     const table = document.getElementById(tableId);
-
-    const staffName = document.getElementById('staffName') ? document.getElementById('staffName').innerText : '';
-    const staffDept = document.getElementById('staffDept') ? document.getElementById('staffDept').innerText : '';
 
     if (printBtn) {
         printBtn.addEventListener('click', function () {
@@ -18,38 +15,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (excelBtn && table) {
         excelBtn.addEventListener('click', function () {
+            // Prepare data from table
             const wb = XLSX.utils.book_new();
+            let sheetData = [];
 
-            // Convert table to array of arrays
-            const tableData = [];
-            const rows = table.querySelectorAll('tr');
-            rows.forEach(row => {
-                const rowData = [];
-                row.querySelectorAll('th, td').forEach(cell => {
-                    rowData.push(cell.innerText);
-                });
-                tableData.push(rowData);
+            // Check if page-specific data is provided
+            if (window.customExcelHeader) {
+                sheetData = window.customExcelHeader;
+            }
+
+            // Add table headers
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.innerText);
+            sheetData.push(headers);
+
+            // Add table body rows
+            table.querySelectorAll('tbody tr').forEach(row => {
+                const rowData = Array.from(row.querySelectorAll('td')).map(td => td.innerText);
+                sheetData.push(rowData);
             });
 
-            // Build final data
-            const finalData = [
-                [staffName],         // Row 0
-                [staffDept],         // Row 1
-                [],                  // Row 2 (empty)
-                [],                  // Row 3 (empty)
-                ...tableData         // Table content
-            ];
+            // Create worksheet and workbook
+            const ws = XLSX.utils.aoa_to_sheet(sheetData);
+            XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
-            const ws = XLSX.utils.aoa_to_sheet(finalData);
-
-            // Add merges for first two rows (colspan = 3)
-            ws['!merges'] = [
-                { s: { r:0, c:0 }, e: { r:0, c:2 } }, // merge A1:C1
-                { s: { r:1, c:0 }, e: { r:1, c:2 } }  // merge A2:C2
-            ];
-
-            XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-            XLSX.writeFile(wb, 'exported_data.xlsx');
+            // Export as Excel .xlsx
+            XLSX.writeFile(wb, "exported_data.xlsx");
         });
     }
 });

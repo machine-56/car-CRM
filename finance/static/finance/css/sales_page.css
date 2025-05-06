@@ -1,0 +1,56 @@
+
+
+@media print {
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .main_div_user {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    button,
+    .btn,
+    .no-print {
+        display: none !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    nav.navbar {
+        position: static !important;
+    }
+
+    .footer_main {
+        position: static !important;
+    }
+
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+        page-break-inside: avoid;
+        display: block;
+    }
+
+    table {
+        width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    .container {
+        page-break-after: auto;
+    }
+
+    /* To prevent X overflow */
+    .container, .main, .content {
+        max-width: 100% !important;
+        overflow-x: visible !important;
+    }
+}
+
+
+

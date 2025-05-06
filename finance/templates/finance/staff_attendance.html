@@ -20,10 +20,11 @@
   </div>
 
   <div id="attendanceSummary" class="my-3">
-    <strong>Total Days:</strong> <span id="totalDays"></span> |
-    <strong>Present:</strong> <span id="presentDays"></span> |
-    <strong>Absent:</strong> <span id="absentDays"></span>
+    <strong>Total Days:</strong> {{ total_days }} |
+    <strong>Present:</strong> {{ present_days }} |
+    <strong>Absent:</strong> {{ absent_days }}
   </div>
+
   
 
   <table id="attendanceTable" class="table table-striped">
@@ -47,4 +48,5 @@
 </div>
 
 <script src="{% static 'finance/js/export.js' %}"></script>
+<script src="{% static 'finance/js/attendance_summary.js' %}"></script>
 {% endblock %}

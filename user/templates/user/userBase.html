@@ -70,7 +70,12 @@
           <a class="nav-link text-white {% if request.path == '/user/service-status/' %}activein{% endif %}" href="{% url 'service_status' %}">
               <i class="fas fa-clipboard-list me-2"></i>Service Status
           </a>
-        </li>      
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/user/vehicle/countdown/' %}activein{% endif %}" href="{% url 'view_vehicle_countdown' %}">
+              <i class="fas fa-clock me-2"></i> Vehicle Countdown
+          </a>
+        </li>       
         <li class="nav-item">
           <a class="nav-link text-white {% if request.path == '/user/profile/' %}activein{% endif %}" href="{% url 'profile_view' %}">
             <i class="fas fa-user me-2"></i>Profile

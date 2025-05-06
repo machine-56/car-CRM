@@ -10,6 +10,7 @@ urlpatterns = [
     path('service-status/', views.service_status, name='service_status'),
     path('service-status/view/', views.status_view, name='status_view'),
     path('profile/', views.profile_view, name='profile_view'),
+    path('vehicle/countdown/', views.view_vehicle_countdown, name='view_vehicle_countdown'),
 
     path('logout/', logout_fn, name='logout_fn')
 ]
