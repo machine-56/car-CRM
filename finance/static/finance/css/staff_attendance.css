@@ -1,34 +1,30 @@
-
-.head_main{
+.head_main {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#attendanceSummary{
+#attendanceSummary {
     display: flex;
 }
+
 @media (max-width: 768px) {
-    .head_main{
-        display: flex;
+    .head_main {
         flex-direction: column;
         gap: 10px;
     }
-    .btn-div{
-        display: flex;
-        justify-content: center;
+    .btn-div {
         flex-direction: column;
         gap: 10px;
         margin-bottom: 2rem;
     }
-    .btn{
+    .btn {
         width: 100%;
     }
-    #attendanceSummary{
-        display: flex;
+    #attendanceSummary {
         flex-direction: column;
     }
-    .mob_hid{
+    .mob_hid {
         display: none;
     }
 }
@@ -38,45 +34,33 @@
         height: auto !important;
         overflow: visible !important;
     }
-
     .main_div_user {
         height: auto !important;
         overflow: visible !important;
     }
-    
     button,
     .btn,
     .no-print {
         display: none !important;
     }
-
-    .sidebar {
+    .sidebar,
+    .navbar-toggle,
+    .navbar,
+    .footer_main {
         display: none !important;
     }
+    .print-section {
+        display: block !important;
+    }
 
-    nav.navbar {
+    /* PDF mode: override regular print */
+    html.print-pdf .navbar,
+    html.print-pdf .footer_main {
+        display: block !important;
         position: static !important;
-    }
-
-    .footer_main {
-        position: static !important;
-    }
-
-    table {
-        page-break-inside: auto;
-    }
-
-    tr {
-        page-break-inside: avoid;
-        page-break-after: auto;
-    }
-
-    thead {
-        display: table-header-group;
-    }
-
-    tfoot {
-        display: table-footer-group;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        margin: 0;
     }
 }
 

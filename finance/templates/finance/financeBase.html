@@ -62,23 +62,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/finance/sales/' %}activein{% endif %}" href="{% url 'sales_page' %}">
-            <i class="fas fa-chart-line me-2"></i>Sales
+          <a class="nav-link text-white {% if request.path == '/finance/vehicle-sales/' %}activein{% endif %}" href="{% url 'vehicle_sales_page' %}">
+            <i class="fas fa-car me-2"></i>Vehicle Sales
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/finance/spare-parts/' %}activein{% endif %}" href="{% url 'spare_parts' %}">
-              <i class="fas fa-boxes me-2"></i>Stocks Overview
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {% if request.path == '/finance/spare-parts-orders/' %}activein{% endif %}" href="{% url 'spare_parts_orders' %}">
-              <i class="fas fa-clipboard-list me-2"></i>Orders
+          <a class="nav-link text-white {% if request.path == '/finance/parts-sales/' %}activein{% endif %}" href="{% url 'spare_parts_page' %}">
+            <i class="fas fa-cogs me-2"></i>Parts Sales
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white {% if request.path == '/finance/service/history/' %}activein{% endif %}" href="{% url 'service_history' %}">
-              <i class="fas fa-list me-2"></i>Service History
+            <i class="fas fa-list me-2"></i>Service History
           </a>
         </li>
         <li class="nav-item">
@@ -86,13 +81,13 @@
             <i class="fas fa-clock me-2"></i>Set Service Timer
           </a>
         </li>
-
+        
         <li class="nav-item">
           <a class="nav-link text-white" href="{% url 'login_fn' %}">
             <i class="fas fa-sign-out-alt me-2"></i>Logout
           </a>
         </li>
-      </ul>
+      </ul>      
     </div>
 
     <!-- Main Content -->

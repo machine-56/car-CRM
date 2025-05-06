@@ -76,6 +76,11 @@
             </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white {% if request.path == '/sales/spare-parts-orders/' %}activein{% endif %}" href="{% url 'spare_parts_orders' %}">
+              <i class="fas fa-clipboard-list me-2"></i>Orders
+          </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-white {% if request.path == '/sales/staffs/' %}activein{% endif %}" href="{% url 'staffs' %}">
               <i class="fas fa-users me-2"></i>Staffs
             </a>

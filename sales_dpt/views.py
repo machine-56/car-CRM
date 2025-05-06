@@ -49,6 +49,31 @@ def order_list(request):
 def stocks(request):
     return render(request, 'sales_dpt/stock.html')
 
+def spare_parts_orders(request):
+    orders = [
+        {'date': '2025-05-01', 'part': 'Brake Pad', 'category': 'Braking System', 'quantity': 10, 'expense': 2000},
+        {'date': '2025-05-03', 'part': 'Oil Filter', 'category': 'Engine', 'quantity': 15, 'expense': 1500},
+        {'date': '2025-05-05', 'part': 'Air Filter', 'category': 'Engine', 'quantity': 8, 'expense': 800},
+        {'date': '2025-05-06', 'part': 'Battery', 'category': 'Electrical', 'quantity': 5, 'expense': 2500},
+        {'date': '2025-05-07', 'part': 'Headlight', 'category': 'Electrical', 'quantity': 12, 'expense': 1200},
+    ]
+
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    category = request.GET.get('category')
+
+    if start_date and end_date:
+        orders = [o for o in orders if start_date <= o['date'] <= end_date]
+    if category and category != 'all':
+        orders = [o for o in orders if o['category'] == category]
+
+    return render(request, 'sales/spare_parts_orders.html', {
+        'orders': orders,
+        'start_date': start_date,
+        'end_date': end_date,
+        'selected_category': category,
+    })
+
 
 def staffs(request):
     return render(request, 'sales_dpt/staffs.html')

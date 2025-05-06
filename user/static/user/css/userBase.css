@@ -33,7 +33,7 @@ nav.navbar {
 }
 
 .sidebar {
-  width: 250px;
+  width: 260px;
   background-color: var(--dark-violet);
   color: var(--off-white);
   flex-shrink: 0;

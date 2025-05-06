@@ -4,47 +4,52 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'finance/css/staff_attendance.css' %}">
 
-<div class="container testing">
-  <div class="head_main no-print">
+<div class="container testing print-section">
+  <div class="head_main no-print print-pdf-only">
     <h2>Attendance Records</h2>
     <div class="btn-div">
+      <button class="btn btn-cstm me-2" id="btnPrintPage">Print</button>
       <button class="btn btn-cstm me-2" id="btnPrint" data-table="attendanceTable">Print as PDF</button>
       <button class="btn btn-success btn_w me-2" id="btnExcel" data-table="attendanceTable">Export as Excel</button>
     </div>
   </div>
 
   <!-- Staff info -->
-  <div class="mb-3">
+  <div class="mb-3 print-section">
     <p id="staffName"><strong>Name:</strong> {{ name }}</p>
     <p id="staffDept"><strong>Department:</strong> {{ department }}</p>
   </div>
 
-  <div id="attendanceSummary" class="my-3">
-    <div><strong>Total Days:</strong> {{ total_days }} <span class="mob_hid me-2" >|</span></div>
-    <div><strong>Present:</strong> {{ present_days }} <span class="mob_hid me-2" >|</span></div>
+  <div id="attendanceSummary" class="my-3 print-section">
+    <div><strong>Total Days:</strong> {{ total_days }} <span class="mob_hid me-2">|</span></div>
+    <div><strong>Present:</strong> {{ present_days }} <span class="mob_hid me-2">|</span></div>
     <div><strong>Absent:</strong> {{ absent_days }}</div>
   </div>
 
-  
+  <div class="mb-3 print-section">
+    <p><strong>Absent records</strong></p>
+  </div>
 
-  <table id="attendanceTable" class="table table-striped">
-    <thead> 
-      <tr>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Reason</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for record in attendance_data %}
-      <tr>
-        <td>{{ record.date }}</td>
-        <td>{{ record.status }}</td>
-        <td>{{ record.reason }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-responsive print-section">
+    <table id="attendanceTable" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in attendance_data %}
+        <tr>
+          <td>{{ record.date }}</td>
+          <td>{{ record.status }}</td>
+          <td>{{ record.reason }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script src="{% static 'finance/js/export.js' %}"></script>

@@ -1,48 +1,51 @@
 {% extends 'finance/financeBase.html' %}
 {% load static %}
+
+{% block title %}Vehicle Sales{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'finance/css/sales_page.css' %}">
+<link rel="stylesheet" href="{% static 'finance/css/vehicle_sales.css' %}">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="container">
-    <h2>Sales</h2>
+    <h2 class="text-center mb-4">Vehicle Sales</h2>
 
     <form class="row mb-3" method="get">
-        <div class="col-md-4 col-sm-12 mb-2">
+        <div class="col-md-4">
             <label for="start_date">Start Date</label>
             <input type="date" id="start_date" name="start_date" class="form-control" value="{{ start_date }}">
         </div>
-        <div class="col-md-4 col-sm-12 mb-2">
+        <div class="col-md-4">
             <label for="end_date">End Date</label>
             <input type="date" id="end_date" name="end_date" class="form-control" value="{{ end_date }}">
         </div>
-        <div class="col-md-4 col-sm-12 mb-2 d-flex align-items-end">
+        <div class="col-md-4 d-flex align-items-end">
             <button type="submit" class="btn btn-cstm w-100">Filter</button>
         </div>
     </form>
 
-    <canvas id="salesChart" class="mb-4"></canvas>
+    <canvas id="vehicleSalesChart" class="mb-4"></canvas>
 
     <div class="btn-div">
-        <button class="btn btn-cstm me-2" id="btnPrint" data-table="salesTable">Print as PDF</button>
-        <button class="btn btn-success" id="btnExcel" data-table="salesTable">Export as Excel</button>
+        <button class="btn btn-cstm me-2" id="btnPrint" data-table="vehicleSalesTable">Print as PDF</button>
+        <button class="btn btn-success btn_w" id="btnExcel" data-table="vehicleSalesTable">Export as Excel</button>
     </div>
 
     <div class="table-responsive">
-        <table id="salesTable" class="table table-striped">
+        <table id="vehicleSalesTable" class="table table-striped">
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Car Sales</th>
-                    <th>Spare Parts Sales</th>
+                    <th>Vehicles Sold</th>
+                    <th>Revenue</th>
                 </tr>
             </thead>
             <tbody>
-                {% for row in sales_data %}
+                {% for row in vehicle_sales_data %}
                 <tr>
                     <td>{{ row.date }}</td>
-                    <td>{{ row.car_sales }}</td>
-                    <td>{{ row.spare_sales }}</td>
+                    <td>{{ row.units_sold }}</td>
+                    <td>₹{{ row.revenue }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -50,6 +53,6 @@
     </div>
 </div>
 
-<script src="{% static 'finance/js/sales_page.js' %}"></script>
+<script src="{% static 'finance/js/vehicle_sales.js' %}"></script>
 <script src="{% static 'finance/js/export.js' %}"></script>
 {% endblock %}
