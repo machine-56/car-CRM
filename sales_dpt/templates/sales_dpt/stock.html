@@ -1,12 +1,9 @@
 {% extends 'sales_dpt/salesBase.html' %}
 {% load static %}
-
 {% block title %}Stock Overview{% endblock %}
-
 {% block content %}
 <link rel="stylesheet" href="{% static 'sales_dpt/css/stocks.css' %}">
 
-<!-- Filter Dropdown -->
 <div class="filter-dropdown position-fixed top-1 end-0 mt-2 me-2 z-2">
   <select id="filterCategory" class="form-select">
     <option value="all">Show All</option>
@@ -15,9 +12,9 @@
     <option value="Electrical">Electrical</option>
   </select>
 </div>
+
 <div class="container mt-5 position-relative">
   <h2 class="mb-4 text-center">Spare Parts Stock</h2>
-
 
   <div class="table-responsive">
     <table class="table table-bordered table-hover text-center align-middle" id="stockTable">
@@ -26,31 +23,50 @@
           <th>Part Name</th>
           <th>Category</th>
           <th>Stock Quantity</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr data-category="Braking System">
-          <td>Brake Pads</td>
-          <td>Braking System</td>
-          <td><span class="badge bg-danger">5</span></td>
+        {% for part in parts_data %}
+        <tr data-category="{{ part.category }}">
+          <td>{{ part.name }}</td>
+          <td>{{ part.category }}</td>
+          <td>
+            {% if part.quantity < 10 %}
+              <span class="badge bg-danger">{{ part.quantity }}</span>
+            {% else %}
+              {{ part.quantity }}
+            {% endif %}
+          </td>
+          <td>
+            <button class="btn btn-cstm btn-order" data-part="{{ part.name }}" data-bs-toggle="modal" data-bs-target="#orderModal">Order</button>
+          </td>
         </tr>
-        <tr data-category="Engine">
-          <td>Air Filter</td>
-          <td>Engine</td>
-          <td>18</td>
-        </tr>
-        <tr data-category="Engine">
-          <td>Oil Filter</td>
-          <td>Engine</td>
-          <td><span class="badge bg-danger">8</span></td>
-        </tr>
-        <tr data-category="Electrical">
-          <td>Headlight Bulb</td>
-          <td>Electrical</td>
-          <td>20</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form method="post" class="modal-content">
+      {% csrf_token %}
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModalLabel">Place Order</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p id="orderPartName">Ordering: {{part.name}}</p>
+        <input type="hidden" name="part_name" id="modalPartName" value="{{part.name}}">
+        <label for="orderQuantity" class="form-label">Enter Quantity</label>
+        <input type="number" name="order_quantity" id="orderQuantity" class="form-control" min="1" required>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-cstm">Place Order</button>
+      </div>
+    </form>
   </div>
 </div>
 

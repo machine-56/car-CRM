@@ -1,4 +1,7 @@
 from django.shortcuts import redirect, render
+from django.contrib import messages
+
+from django.http import HttpResponseNotFound
 
 # Create your views here.
 def sales_home(request):
@@ -47,39 +50,27 @@ def order_list(request):
     return render(request, 'sales_dpt/order_list.html')
 
 def stocks(request):
-    return render(request, 'sales_dpt/stock.html')
-
-def spare_parts_orders(request):
-    orders = [
-        {'date': '2025-05-01', 'part': 'Brake Pad', 'category': 'Braking System', 'quantity': 10, 'expense': 2000},
-        {'date': '2025-05-03', 'part': 'Oil Filter', 'category': 'Engine', 'quantity': 15, 'expense': 1500},
-        {'date': '2025-05-05', 'part': 'Air Filter', 'category': 'Engine', 'quantity': 8, 'expense': 800},
-        {'date': '2025-05-06', 'part': 'Battery', 'category': 'Electrical', 'quantity': 5, 'expense': 2500},
-        {'date': '2025-05-07', 'part': 'Headlight', 'category': 'Electrical', 'quantity': 12, 'expense': 1200},
+    # Fake database data (to replace later with real DB)
+    parts_data = [
+        {'name': 'Brake Pads', 'category': 'Braking System', 'quantity': 5},
+        {'name': 'Air Filter', 'category': 'Engine', 'quantity': 18},
+        {'name': 'Oil Filter', 'category': 'Engine', 'quantity': 8},
+        {'name': 'Headlight Bulb', 'category': 'Electrical', 'quantity': 20},
     ]
 
-    start_date = request.GET.get('start_date')
-    end_date = request.GET.get('end_date')
-    category = request.GET.get('category')
+    if request.method == 'POST':
+        part_name = request.POST.get('part_name')
+        order_quantity = request.POST.get('order_quantity')
+        messages.success(request, f'Order placed for {order_quantity} units of {part_name}!')
+        return redirect('stocks')
 
-    if start_date and end_date:
-        orders = [o for o in orders if start_date <= o['date'] <= end_date]
-    if category and category != 'all':
-        orders = [o for o in orders if o['category'] == category]
-
-    return render(request, 'sales/spare_parts_orders.html', {
-        'orders': orders,
-        'start_date': start_date,
-        'end_date': end_date,
-        'selected_category': category,
-    })
+    return render(request, 'sales_dpt/stock.html', {'parts_data': parts_data})
 
 
 def staffs(request):
     return render(request, 'sales_dpt/staffs.html')
 
 
-from django.http import HttpResponseNotFound
 
 def sales_staff_profile(request, id):
     staff_data = {
