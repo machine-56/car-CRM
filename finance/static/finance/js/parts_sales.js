@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    window.customExcelHeader = [
+        ["Spare Parts Sales Report"],
+        ["Generated on:", new Date().toLocaleDateString()],
+        []
+    ];
+
     const table = document.getElementById("partsSalesTable");
     const chartCanvas = document.getElementById("partsSalesChart");
 

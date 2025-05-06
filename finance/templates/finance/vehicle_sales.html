@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="container">
-    <h2 class="text-center mb-4">Vehicle Sales</h2>
+    <h2 class="text-center mb-4 print-section">Vehicle Sales</h2>
 
     <form class="row mb-3" method="get">
         <div class="col-md-4">
@@ -27,11 +27,12 @@
     <canvas id="vehicleSalesChart" class="mb-4"></canvas>
 
     <div class="btn-div">
+        <button class="btn btn-cstm me-2" id="btnPrintPage">Print Page</button>
         <button class="btn btn-cstm me-2" id="btnPrint" data-table="vehicleSalesTable">Print as PDF</button>
         <button class="btn btn-success btn_w" id="btnExcel" data-table="vehicleSalesTable">Export as Excel</button>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive print-section">
         <table id="vehicleSalesTable" class="table table-striped">
             <thead>
                 <tr>
