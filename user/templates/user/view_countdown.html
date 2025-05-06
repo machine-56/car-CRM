@@ -1,16 +1,20 @@
 {% extends 'user/userBase.html' %}
+{% load static %}
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'user/css/view_counter.css' %}">
+
 <div class="container">
     <h2>Your Vehicle Countdown</h2>
     <div class="row">
         {% for c in countdowns %}
-        <div class="col-md-4 col-sm-6 mb-4">
-            <div class="card p-3 shadow-sm">
+        <div class="col-md-5 col-sm-6 mb-4">
+            <div class="card p-3 shadow-sm count_card">
                 <h5>Vehicle Number: {{ c.vehicle_number }}</h5>
                 <p><strong>Estimated time till delivery:</strong></p>
                 <p class="countdown-time fs-4" data-time="{{ c.time_str }}">{{ c.time_str }}</p>
                 {% if c.status %}
-                <span class="badge bg-success mt-2">{{ c.status }}</span>
+                <span class="status_msg">{{ c.status }}</span>
                 {% endif %}
             </div>
         </div>
