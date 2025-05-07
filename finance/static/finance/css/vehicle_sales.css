@@ -63,4 +63,9 @@
     html.print-pdf .graph-section {
         display: block !important;
     }
+    canvas{
+        width: 100% !important;
+        height: auto !important;
+        max-height: 400px !important;
+    }
 }
