@@ -10,15 +10,88 @@
     <p><strong>Email:</strong> {{ service.email }}</p>
     <p><strong>Phone:</strong> {{ service.phone }}</p>
     <hr>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="invoiceTable">
         <thead><tr><th>Item</th><th>Amount</th></tr></thead>
         <tbody>
             {% for item in service.items %}
-            <tr><td>{{ item.desc }}</td><td>₹{{ item.amount }}</td></tr>
+            <tr><td>{{ item.desc }}</td><td>&#8377;{{ item.amount }}</td></tr>
             {% endfor %}
         </tbody>
     </table>
     <h4 class="text-end mt-3"><strong>Total:</strong> ₹{{ service.total }}</h4>
-    <button class="btn btn-cstm no-print" onclick="window.print()">Print Bill</button>
+    
+    <div class="btn-div">
+        <button class="btn btn-cstm no-print" onclick="window.print()">Print Bill</button>
+        <button class="btn btn-cstm no-print" id="btnPrintInvoice">Download PDF</button>
+    </div>
+
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const printPdfBtn = document.getElementById('btnPrintInvoice');
+        const table = document.getElementById('invoiceTable');
+        const pageTitle = document.querySelector('h2') ? document.querySelector('h2').innerText : 'Invoice';
+    
+        if (printPdfBtn && table) {
+            printPdfBtn.addEventListener('click', async function () {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'pt', 'a4');
+    
+                // Get invoice info directly from the page
+                const vehicle = '{{ service.vehicle }}';
+                const customer = '{{ service.customer }}';
+                const email = '{{ service.email }}';
+                const phone = '{{ service.phone }}';
+                const total = '{{ service.total }}';
+    
+                // Add title and info
+                doc.setFontSize(18);
+                doc.text(pageTitle, 40, 40);
+                doc.setFontSize(12);
+                doc.text(`Vehicle: ${vehicle}`, 40, 60);
+                doc.text(`Customer: ${customer}`, 40, 80);
+                doc.text(`Email: ${email}`, 40, 100);
+                doc.text(`Phone: ${phone}`, 40, 120);
+    
+                // Replace ₹ with Rs inside the table temporarily
+                const tdElements = table.querySelectorAll('tbody td');
+                tdElements.forEach(td => {
+                    if (td.innerText.includes('₹')) {
+                        td.dataset.original = td.innerText;  // Save original
+                        td.innerText = td.innerText.replace('₹', 'Rs ');
+                    }
+                });
+    
+                // Add table
+                doc.autoTable({
+                    html: '#invoiceTable',
+                    startY: 140,
+                    styles: { fontSize: 10 },
+                    headStyles: { fillColor: [211, 47, 47] },
+                });
+    
+                // Restore original ₹ in the table
+                tdElements.forEach(td => {
+                    if (td.dataset.original) {
+                        td.innerText = td.dataset.original;
+                        delete td.dataset.original;
+                    }
+                });
+    
+                // Add total at the bottom
+                doc.setFontSize(12);
+                doc.text(`Total: Rs ${total}`, 40, doc.lastAutoTable.finalY + 30);
+    
+                const safeTitle = pageTitle.replace(/\s+/g, '_').toLowerCase();
+                doc.save(`${safeTitle}.pdf`);
+            });
+        }
+    });
+</script>
+    
+
 {% endblock %}

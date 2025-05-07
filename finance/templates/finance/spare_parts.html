@@ -28,7 +28,7 @@
 
     <div class="btn-div mb-3">
         <button class="btn btn-cstm me-2" id="btnPrintPage">Print Page</button>
-        <button class="btn btn-cstm me-2" id="btnPrint" data-table="partsSalesTable">Print as PDF</button>
+        <button class="btn btn-cstm me-2" id="btnPrint" data-table="partsSalesTable">Download PDF</button>
         <button class="btn btn-success" id="btnExcel" data-table="partsSalesTable">Export as Excel</button>
     </div>
 
@@ -46,7 +46,7 @@
                 <tr>
                     <td>{{ row.date }}</td>
                     <td>{{ row.units_sold }}</td>
-                    <td>₹{{ row.revenue }}</td>
+                    <td>&#8377;{{ row.revenue }}</td>
                 </tr>
                 {% endfor %}
             </tbody>            

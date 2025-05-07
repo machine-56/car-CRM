@@ -41,26 +41,29 @@
     }
     button,
     .btn,
+    .navbar-toggler,
     .no-print {
         display: none !important;
     }
-    .sidebar,
-    .navbar-toggle,
-    .navbar,
-    .footer_main {
+    .sidebar {
         display: none !important;
+    }
+    nav.navbar,
+    .footer_main {
+        display: block !important;
+        position: static !important;
+        margin: 0;
     }
     .print-section {
         display: block !important;
     }
-
-    html.print-pdf .navbar,
-    html.print-pdf .footer_main {
-        display: block !important;
-        position: static !important;
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
-        margin: 0;
+    table {
+        width: 100% !important;
+    }
+    .container, .main, .content {
+        max-width: 100% !important;
+        overflow-x: visible !important;
     }
 }
+
 

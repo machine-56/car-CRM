@@ -19,7 +19,7 @@
             <h5 class="card-title">{{ car.name }}</h5>
             <p class="card-text mb-1"><strong>Brand:</strong> {{ car.brand }}</p>
             <p class="card-text mb-1"><strong>Category:</strong> {{ car.get_category_display }}</p>
-            <p class="card-text mb-1"><strong>Price:</strong> ₹{{ car.price }}</p>
+            <p class="card-text mb-1"><strong>Price:</strong> &#8377;{{ car.price }}</p>
             <p class="card-text mb-1"><strong>Available:</strong> {{ car.available|yesno:"Yes,No" }}</p>
           </div>
           <a href="{% url 'edit_car' car.id %}" class="btn btn-cstm mt-3 w-100">Edit</a>

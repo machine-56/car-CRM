@@ -5,14 +5,84 @@
 <link rel="stylesheet" href="{% static 'finance/css/print_styles.css' %}">
 
 <div class="container">
-    <h2>Vehicle Number: {{ vehicle }}</h2>
+    <h2 class="print-section">Vehicle Number: {{ vehicle }}</h2>
     <p><strong>Customer:</strong> {{ customer }}</p>
     <p><strong>Date:</strong> {{ date }}</p>
     <p><strong>Time:</strong> {{ time }}</p>
     <p><strong>Bill Number:</strong> {{ token }}</p>
     <p><strong>Status:</strong> {{ status }}</p>
 
-    <button class="btn btn-cstm no-print mt-3" onclick="window.print()">Print Token</button>
-    <a href="{% url 'print_bill' token %}" class="no-print btn btn-secondary btn_w mt-3">View Full Bill</a>
+    <div class="btn-div mt-3">
+        <button class="btn btn-cstm me-2" id="btnPrintPage">Print Page</button>
+        <button class="btn btn-cstm me-2" id="btnPrint" data-table="tokenTable">Download PDF</button>
+        <a href="{% url 'print_bill' token %}" class="no-print btn btn-secondary btn_w">View Full Bill</a>
+    </div>
+
+    <!-- Hidden table for export -->
+    <div class="table-responsive print-section" style="display:none;">
+        <table id="tokenTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Vehicle</td><td>{{ vehicle }}</td></tr>
+                <tr><td>Customer</td><td>{{ customer }}</td></tr>
+                <tr><td>Date</td><td>{{ date }}</td></tr>
+                <tr><td>Time</td><td>{{ time }}</td></tr>
+                <tr><td>Bill Number</td><td>{{ token }}</td></tr>
+                <tr><td>Status</td><td>{{ status }}</td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="{% static 'finance/js/export.js' %}"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const printPageBtn = document.getElementById('btnPrintPage');
+    const printPdfBtn = document.getElementById('btnPrint');
+    const tableId = printPdfBtn && printPdfBtn.dataset.table;
+    const table = document.getElementById(tableId);
+
+    if (printPageBtn) {
+        printPageBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.documentElement.classList.add('print-mode');
+            window.print();
+            setTimeout(() => {
+                document.documentElement.classList.remove('print-mode');
+            }, 500);
+        });
+    }
+
+    if (printPdfBtn && table) {
+        printPdfBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.documentElement.classList.add('print-pdf');
+
+            html2canvas(table).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                const imgProps = pdf.getImageProperties(imgData);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('exported_data.pdf');
+
+                document.documentElement.classList.remove('print-pdf');
+            });
+        });
+    }
+});
+</script>
+
 {% endblock %}
