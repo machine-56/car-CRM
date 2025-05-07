@@ -32,6 +32,8 @@
     .no-print,
     .navbar-toggle {
         display: none !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
     }
 
     .navbar,
@@ -47,9 +49,6 @@
         display: block !important;
     }
 
-    .graph-section {
-        display: none !important;
-    }
 
     table {
         width: 100% !important;

@@ -9,7 +9,7 @@
 <div class="container">
     <h2 class="text-center mb-4 print-section">Vehicle Sales</h2>
 
-    <form class="row mb-3" method="get">
+    <form class="row mb-3 no-print" method="get">
         <div class="col-md-4">
             <label for="start_date">Start Date</label>
             <input type="date" id="start_date" name="start_date" class="form-control" value="{{ start_date }}">
@@ -36,7 +36,7 @@
 
     <div class="table-responsive print-section">
         <table id="vehicleSalesTable" class="table table-striped">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th>Date</th>
                     <th>Vehicles Sold</th>

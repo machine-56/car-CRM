@@ -45,44 +45,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="{% static 'finance/js/export.js' %}"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const printPageBtn = document.getElementById('btnPrintPage');
-    const printPdfBtn = document.getElementById('btnPrint');
-    const tableId = printPdfBtn && printPdfBtn.dataset.table;
-    const table = document.getElementById(tableId);
 
-    if (printPageBtn) {
-        printPageBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            document.documentElement.classList.add('print-mode');
-            window.print();
-            setTimeout(() => {
-                document.documentElement.classList.remove('print-mode');
-            }, 500);
-        });
-    }
-
-    if (printPdfBtn && table) {
-        printPdfBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            document.documentElement.classList.add('print-pdf');
-
-            html2canvas(table).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
-                const imgProps = pdf.getImageProperties(imgData);
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('exported_data.pdf');
-
-                document.documentElement.classList.remove('print-pdf');
-            });
-        });
-    }
-});
-</script>
 
 {% endblock %}
